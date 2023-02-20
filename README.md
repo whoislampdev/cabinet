@@ -1,9 +1,9 @@
 # cabinet
 gestion d'une clinique
 
-#SGBD
+//#SGBD
 
 postgresql
 
-#database_name
+//#database_name
 :cabinet
