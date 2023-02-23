@@ -5,7 +5,7 @@
         <!-- Name -->
         <div>
             <x-input-label for="Prenom" :value="__('Prenom')" />
-            <x-text-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus autocomplete="name" />
+            <x-text-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus autocomplete="prenom" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
         <div>
@@ -16,19 +16,19 @@
 
         <div>
             <x-input-label for="Adresse" :value="__('Adresse')" />
-            <x-text-input id="adresse" class="block mt-1 w-full" type="text" name="adresse" :value="old('adresse')" required autofocus autocomplete="name" />
+            <x-text-input id="adresse" class="block mt-1 w-full" type="text" name="adresse" :value="old('adresse')" required autofocus autocomplete="adresse" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="Telephone" :value="__('Telephone')" />
-            <x-text-input id="telephone" class="block mt-1 w-full" type="text" name="telephone" :value="old('telephone')" required autofocus autocomplete="name" />
+            <x-text-input id="telephone" class="block mt-1 w-full" type="text" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="Fonction" :value="__('Fonction')" />
-            <x-text-input id="fonction" class="block mt-1 w-full" type="text" name="fonction" :value="old('fonction')" required autofocus autocomplete="name" />
+            <x-text-input id="fonction" class="block mt-1 w-full" type="text" name="fonction" :value="old('fonction')" required autofocus autocomplete="fonction" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
