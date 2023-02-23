@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->string('fonction');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('user_type')->default(0);
+            $table->string('user_type')->default('admin');
             $table->rememberToken();
             $table->timestamps();
         });
