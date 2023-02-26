@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 class PersonnalController extends Controller
 {
     /**
@@ -27,6 +30,7 @@ class PersonnalController extends Controller
      */
     public function store(Request $request)
     {
+        // validation des donnees
         $request->validate([
             'telephone' => ['required'],
             'role' => ['required'],
@@ -36,6 +40,7 @@ class PersonnalController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        // add users du cabinet
         Personnals::create([
             'prenom'=>$request->prenom,
             'email'=>$request->email,
@@ -44,6 +49,7 @@ class PersonnalController extends Controller
             'fonction'=>$request->fonction,
             'prenom'=>$request->prenom,
         ]);
+        // creation de la compte d'acces
         User::create([
             'name'=>$request->prenom.' '.$request->name,
             'role'=>$request->request->role,
