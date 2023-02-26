@@ -5,8 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Personnals;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Hash;
 
+=======
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
+use App\Models\User;
+use App\Models\Personnals;
+>>>>>>> 36947b8024c0702a4b59c7a743595f153a2da8b0
 class PersonnalController extends Controller
 {
     /**
@@ -30,29 +39,35 @@ class PersonnalController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+        // validation des donnees
         $request->validate([
             'telephone' => ['required'],
             'role' => ['required'],
             'fonction' => ['required'],
             'adresse' => ['required'],
             'prenom' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Personnals::class],
+            'password' => ['required'],
         ]);
+        // add personal du cabinet
+        // $id=$request->id;
         Personnals::create([
             'prenom'=>$request->prenom,
             'email'=>$request->email,
             'name'=>$request->name,
             'adresse'=>$request->adresse,
             'fonction'=>$request->fonction,
-            'prenom'=>$request->prenom,
+            'telephone'=>$request->telephone,
         ]);
+        // creation de la compte d'acces
         User::create([
             'name'=>$request->prenom.' '.$request->name,
-            'role'=>$request->request->role,
+            'role'=>$request->role,
             'email'=>$request->email,
             'password'=> Hash::make($request->password)
         ]);
+        return back();
 
     }
 

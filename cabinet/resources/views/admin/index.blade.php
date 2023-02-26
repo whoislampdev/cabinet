@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @extends('admin.base')
+=======
+@extends('./admin.base')
+>>>>>>> 36947b8024c0702a4b59c7a743595f153a2da8b0
 
 @section('main')
 

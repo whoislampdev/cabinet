@@ -6,7 +6,11 @@
         <a href="index.html" class="logo">
             <i class="mdi mdi-album"></i>
             <span>
+<<<<<<< HEAD
                 CMYFN
+=======
+               CMYFN
+>>>>>>> 36947b8024c0702a4b59c7a743595f153a2da8b0
             </span>
         </a>
     </div>
@@ -23,11 +27,11 @@
             </li>
 
             <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect"><i
+                <a href="#" class="has-arrow waves-effect"><i
                         class="mdi mdi-diamond-stone"></i><span>UI Elements</span></a>
                 <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="ui-buttons.html">Buttons</a></li>
-                    <li><a href="ui-cards.html">Cards</a></li>
+                    <li><a href="{{route('personnals.index')}}">Add Personnel</a></li>
+                    {{-- <li><a href="ui-cards.html">Cards</a></li>
                     <li><a href="ui-carousel.html">Carousel</a>
                     <li><a href="ui-embeds.html">Embeds</a>
                     <li><a href="ui-general.html">General</a></li>
@@ -41,7 +45,7 @@
                     <li><a href="ui-tooltips-popovers.html">Tooltips & Popovers</a></li>
                     <li><a href="ui-scrollspy.html">Scrollspy</a></li>
                     <li><a href="ui-spinners.html">Spinners</a></li>
-                    <li><a href="ui-sweetalerts.html">Sweet Alerts</a></li>
+                    <li><a href="ui-sweetalerts.html">Sweet Alerts</a></li> --}}
                 </ul>
             </li>
 

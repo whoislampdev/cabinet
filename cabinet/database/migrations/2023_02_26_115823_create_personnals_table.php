@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('telephone');
             $table->string('fonction');
-            $table->string('password');
-            $table->string('role');
+            // $table->string('password');
+            // $table->string('role');
             $table->timestamps();
         });
     }
