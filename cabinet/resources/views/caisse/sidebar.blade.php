@@ -6,7 +6,7 @@
         <a href="index.html" class="logo">
             <i class="mdi mdi-album"></i>
             <span>
-                Xeloro
+               CMYFN
             </span>
         </a>
     </div>
@@ -26,8 +26,8 @@
                 <a href="javascript: void(0);" class="has-arrow waves-effect"><i
                         class="mdi mdi-diamond-stone"></i><span>UI Elements</span></a>
                 <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="ui-buttons.html">Buttons</a></li>
-                    <li><a href="ui-cards.html">Cards</a></li>
+                    <li><a href="{{route('personnals.index')}}">Personnel</a></li>
+                    {{-- <li><a href="ui-cards.html">Cards</a></li>
                     <li><a href="ui-carousel.html">Carousel</a>
                     <li><a href="ui-embeds.html">Embeds</a>
                     <li><a href="ui-general.html">General</a></li>
@@ -41,7 +41,7 @@
                     <li><a href="ui-tooltips-popovers.html">Tooltips & Popovers</a></li>
                     <li><a href="ui-scrollspy.html">Scrollspy</a></li>
                     <li><a href="ui-spinners.html">Spinners</a></li>
-                    <li><a href="ui-sweetalerts.html">Sweet Alerts</a></li>
+                    <li><a href="ui-sweetalerts.html">Sweet Alerts</a></li> --}}
                 </ul>
             </li>
 

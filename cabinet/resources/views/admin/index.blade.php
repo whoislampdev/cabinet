@@ -1,4 +1,4 @@
-@extends('caisse.base')
+@extends('./admin.base')
 
 @section('main')
 
