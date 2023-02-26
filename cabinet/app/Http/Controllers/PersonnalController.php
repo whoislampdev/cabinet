@@ -11,7 +11,7 @@ class PersonnalController extends Controller
      */
     public function index()
     {
-        //
+        return view('personnal.index');
     }
 
     /**
@@ -27,7 +27,30 @@ class PersonnalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'telephone' => ['required'],
+            'role' => ['required'],
+            'fonction' => ['required'],
+            'adresse' => ['required'],
+            'prenom' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        Personnals::create([
+            'prenom'=>$request->prenom,
+            'email'=>$request->email,
+            'name'=>$request->name,
+            'adresse'=>$request->adresse,
+            'fonction'=>$request->fonction,
+            'prenom'=>$request->prenom,
+        ]);
+        User::create([
+            'name'=>$request->prenom.' '.$request->name,
+            'role'=>$request->request->role,
+            'email'=>$request->email,
+            'password'=> Hash::make($request->password)
+        ]);
+
     }
 
     /**
