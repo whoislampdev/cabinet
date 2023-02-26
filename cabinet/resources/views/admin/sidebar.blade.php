@@ -6,7 +6,7 @@
         <a href="index.html" class="logo">
             <i class="mdi mdi-album"></i>
             <span>
-                Xeloro
+                CMYFN
             </span>
         </a>
     </div>
@@ -19,7 +19,7 @@
 
             <li>
                 <a href="index.html" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
-                        class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
+                        class="badge badge-pill badge-primary float-right">7</span><span>Tableau de Bord</span></a>
             </li>
 
             <li>
