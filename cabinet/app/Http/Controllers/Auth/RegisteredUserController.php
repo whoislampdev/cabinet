@@ -31,29 +31,28 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'prenom' => ['required', 'string', 'max:255'],
-            'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'string', 'max:255'],
-            'fonction' => ['required', 'string', 'max:255'],
+            // 'role' => ['required'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'prenom' => $request->prenom,
-            'adresse' => $request->adresse,
-            'telephone' => $request->telephone,
-            'fonction' => $request->fonction,
+            
             'name' => $request->name,
             'email' => $request->email,
+            'role'=>'admin',
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        // event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::ADMIN);
+        // Auth::login($user);
+        // if(Auth::user()->role=='agent'){
+        //     return redirect(RouteServiceProvider::CAISSE);
+        // }elseif(Auth::user()->role=='pharmacien'){
+        //     return  redirect(RouteServiceProvider::PHARMACIE);
+        //   }
+          return   redirect(RouteServiceProvider::HOME);
     }
 }

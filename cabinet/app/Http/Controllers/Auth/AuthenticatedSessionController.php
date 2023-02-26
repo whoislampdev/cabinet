@@ -29,15 +29,17 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (Auth::user()->user_type == 'admin') {
+        if (Auth::user()->role === 'admin') {
             return redirect()->intended(RouteServiceProvider::ADMIN);
-        }elseif (Auth::user()->user_type == 'pharmacie') {
-            return redirect()->intended(RouteServiceProvider::PHARMACIE);
-        }elseif (Auth::user()->user_type == 'caisse') {
-            return redirect()->intended(RouteServiceProvider::CAISSE);
-        }else {
-            return redirect("/login");
         }
+        if (Auth::user()->role === 'pharmacie') {
+            return redirect()->intended(RouteServiceProvider::PHARMACIE);
+        }
+        if (Auth::user()->role === 'caisse') {
+            return redirect()->intended(RouteServiceProvider::CAISSE);
+        }
+            return redirect("/login");
+        
 
         
     }
