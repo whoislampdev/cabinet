@@ -25,14 +25,9 @@
 
 <body>
     <div id="layout-wrapper">
+        @include('admin.navbar')        
+            @include('admin.sidebar')
         <div class="header-border"></div>
-<<<<<<< HEAD
-        @include('admin.navbar')
-        @include('admin.sidebar')
-=======
-        @include('./admin.navbar')
-        @include('./admin.sidebar')
->>>>>>> 36947b8024c0702a4b59c7a743595f153a2da8b0
         <div class="main-content">
 
             <div class="page-content">

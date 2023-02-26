@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Personnals;
-use Illuminate\Http\Request;
-<<<<<<< HEAD
-use Illuminate\Support\Facades\Hash;
 
-=======
+
+use Illuminate\Http\Request;
+
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Personnals;
->>>>>>> 36947b8024c0702a4b59c7a743595f153a2da8b0
+
 class PersonnalController extends Controller
 {
     /**

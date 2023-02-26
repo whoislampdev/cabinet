@@ -6,11 +6,6 @@
         <a href="index.html" class="logo">
             <i class="mdi mdi-album"></i>
             <span>
-<<<<<<< HEAD
-                CMYFN
-=======
-               CMYFN
->>>>>>> 36947b8024c0702a4b59c7a743595f153a2da8b0
             </span>
         </a>
     </div>
