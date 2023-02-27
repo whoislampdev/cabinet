@@ -34,13 +34,12 @@ Route::get('/caisse', function () {
 
 #pharmacie route
 
-
-
 Route::get('/pharmacie', function () {
     return view('pharmacie.index');
 })->middleware(['auth', 'verified'])->name('pharmacie');
 
-
+Route::resource('categorie',TypeMedicamentController::class);
+Route::resource('medicament',MedicamentController::class);
 
 
 
@@ -55,7 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::resource('personnals', PersonnalController::class);
-Route::resource('categorie',TypeMedicamentController::class);
-Route::resource('medicament',MedicamentController::class);
+
 
 require __DIR__.'/auth.php';

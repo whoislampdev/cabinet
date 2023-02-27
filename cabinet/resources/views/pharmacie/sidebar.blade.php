@@ -3,7 +3,7 @@
 <div data-simplebar class="h-100">
 
     <div class="navbar-brand-box">
-        <a href="index.html" class="logo">
+        <a href="{{route('pharmacie')}}" class="logo">
             <i class="mdi mdi-album"></i>
             <span>
                 CMYFN
@@ -19,10 +19,21 @@
 
             <li>
                 <a href="index.html" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
-                        class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
+                        class="badge badge-pill badge-primary float-right">7</span><span>Categorie</span></a>
             </li>
 
             <li>
+                <a href="index.html" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
+                        class="badge badge-pill badge-primary float-right">7</span><span>Medicament</span></a>
+            </li>
+
+            <li>
+                <a href="index.html" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
+                        class="badge badge-pill badge-primary float-right">7</span><span>Vente</span></a>
+            </li>
+
+
+            <!-- <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect"><i
                         class="mdi mdi-diamond-stone"></i><span>UI Elements</span></a>
                 <ul class="sub-menu" aria-expanded="false">
@@ -78,9 +89,9 @@
                     <li><a href="forms-quilljs.html">Quilljs</a></li>
                     <li><a href="forms-uploads.html">File Uploads</a></li>
                 </ul>
-            </li>
+            </li> -->
 
-            <li>
+            <!-- <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect"><i
                         class="mdi mdi-black-mesa"></i><span>Icons</span></a>
                 <ul class="sub-menu" aria-expanded="false">
@@ -89,9 +100,9 @@
                     <li><a href="icons-dripicons.html">Dripicons</a></li>
                     <li><a href="icons-feather.html">Feather Icons</a></li>
                 </ul>
-            </li>
+            </li> -->
 
-            <li class="menu-title">More</li>
+            <!-- <li class="menu-title">More</li>
 
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect"><i
@@ -135,7 +146,7 @@
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
         </ul>
     </div>
