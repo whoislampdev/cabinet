@@ -37,7 +37,7 @@ class MedicamentController extends Controller
         Medicament::create([
             'nom'=>$request->nom,
             'prix'=>$request->prix,
-            'quantite'=>$request->quantite,
+            'quantite_disponible'=>$request->quantite_disponible,
             'posologie'=>$request->posologie,
         ]);
         return back();

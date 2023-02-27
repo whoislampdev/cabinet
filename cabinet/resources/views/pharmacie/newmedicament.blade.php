@@ -9,7 +9,7 @@
                 <h4 style="text-align: center;" class="card-title">Nouveau Medicament</h4>
                 <form action="{{route('medicament.store')}}" method="POST" class="needs-validation" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-row">
+                    <div class="form-row">      
                         <div class="col-md-12 mb-3">
                             <label for="validationCustom01">Nom Medicament</label>
                             <input name="nom" type="text" class="form-control" id="validationCustom01" placeholder="Nom Medicament" required>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="validationCustom01">Quantite</label>
-                            <input name="quantite" type="number" class="form-control" id="validationCustom01" placeholder="Quantite" required>
+                            <input name="quantite_disponible" type="number" class="form-control" id="validationCustom01" placeholder="Quantite" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
