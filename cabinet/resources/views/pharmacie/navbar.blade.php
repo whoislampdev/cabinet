@@ -17,12 +17,16 @@
 
                                 <!-- item-->
                                 <a href="{{route('categorie.index')}}" class="dropdown-item notify-item">
-                                    Categorie Medicament
+                                    Categorie
                                 </a>
 
                                 <!-- item-->
                                 <a href="{{route('medicament.index')}}" class="dropdown-item notify-item">
                                     Medicament
+                                </a>
+
+                                <a href="{{route('medicament.index')}}" class="dropdown-item notify-item">
+                                    Vente
                                 </a>
 
                                 <!-- item-->

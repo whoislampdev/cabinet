@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Medicament;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,10 +15,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vente_medicaments', function (Blueprint $table) {
-            $table->id();
-
+            $table->id(); 
             $table->integer('quantite');
             $table->foreignIdFor(User::class)->nullable();
+            $table->foreignIdFor(Patient::class)->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignIdFor(Medicament::class)->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
