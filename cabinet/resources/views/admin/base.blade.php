@@ -3,11 +3,9 @@
 
 <head>
     <meta charset="utf-8" />
-<<<<<<< HEAD
     <title> CMYFN</title>
-=======
-    <title> CM YFN</title>
->>>>>>> 36947b8024c0702a4b59c7a743595f153a2da8b0
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />

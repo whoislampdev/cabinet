@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('prix')->default(0);
             $table->longText('posologie');
             $table->integer('quantite_disponible')->default(0);
-            $table->integer('quantite_alerte')->default(0);
+            $table->integer('quantite_alerte')->default(10);
             $table->foreignIdFor(User::class)->nullable()->constrained();
             $table->foreignIdFor(TypeMedicament::class)->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
 

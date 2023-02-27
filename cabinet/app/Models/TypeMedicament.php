@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class TypeMedicament extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded=[]; 
+
+
+    public function medicament()
+    {
+        return $this->hasMany(Medicament::class);
+    }
 }

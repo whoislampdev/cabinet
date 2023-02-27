@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonnalController;
+use App\Http\Controllers\MedicamentController;
+use App\Http\Controllers\TypeMedicamentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +30,24 @@ Route::get('/caisse', function () {
 })->middleware(['auth', 'verified'])->name('caisse');
 
 
+
+
+#pharmacie route
+
+
+
 Route::get('/pharmacie', function () {
     return view('pharmacie.index');
 })->middleware(['auth', 'verified'])->name('pharmacie');
+
+
+
+
+
+
+
+
+#registration and login
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,5 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::resource('personnals', PersonnalController::class);
+Route::resource('categorie',TypeMedicamentController::class);
+Route::resource('medicament',MedicamentController::class);
 
 require __DIR__.'/auth.php';

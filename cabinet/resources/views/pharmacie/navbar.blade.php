@@ -10,30 +10,29 @@
                         <div class="dropdown d-none d-sm-inline-block">
                             <button type="button" class="btn header-item waves-effect"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="mdi mdi-plus"></i> Create New
+                                <i class="mdi mdi-plus"></i> Ajouter
                                 <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                             </button>
                             <div class="dropdown-menu">
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    Application
+                                <a href="{{route('categorie.index')}}" class="dropdown-item notify-item">
+                                    Categorie Medicament
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    Software
+                                <a href="{{route('medicament.index')}}" class="dropdown-item notify-item">
+                                    Medicament
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     EMS System
                                 </a>
 
-                                <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     CRM App
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
