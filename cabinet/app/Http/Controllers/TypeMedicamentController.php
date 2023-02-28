@@ -15,8 +15,8 @@ class TypeMedicamentController extends Controller
      */
     public function index()
     {
-
-        return view('medicament.newcategorie');
+        $type=TypeMedicament::all();
+        return view('medicament.liste_categorie', compact('type'));
         
     }
 
@@ -25,6 +25,8 @@ class TypeMedicamentController extends Controller
      */
     public function create()
     {
+
+        return view('medicament.newcategorie');
         
     }
 

@@ -16,7 +16,7 @@
                             <div class="dropdown-menu">
 
                                 <!-- item-->
-                                <a href="{{route('categorie.index')}}" class="dropdown-item notify-item">
+                                <a href="{{route('categorie.create')}}" class="dropdown-item notify-item">
                                     Categorie
                                 </a>
 
