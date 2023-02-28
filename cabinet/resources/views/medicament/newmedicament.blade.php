@@ -1,5 +1,4 @@
 @extends('pharmacie.base')
-
 @section('main')
 <div class="row">
     <div class="col-12">

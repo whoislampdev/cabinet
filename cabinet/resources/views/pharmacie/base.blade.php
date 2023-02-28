@@ -20,9 +20,9 @@
     <link href="../plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="../plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
     <!-- App css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/theme.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -41,11 +41,11 @@
         </div>
     </div>
     <!-- jQuery  -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/metismenu.min.js"></script>
-    <script src="assets/js/waves.js"></script>
-    <script src="assets/js/simplebar.min.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/metismenu.min.js"></script>
+    <script src="../assets/js/waves.js"></script>
+    <script src="../assets/js/simplebar.min.js"></script>
 
 
     <!-- Sparkline Js-->

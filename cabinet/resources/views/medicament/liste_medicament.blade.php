@@ -1,4 +1,4 @@
-@extends('pharmacie.base')
+@extends('./pharmacie.base')
 
 @section('main')
 
@@ -41,7 +41,7 @@
                                                             <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                                                         </div>
                                                     </div>
-                                                </div</td>
+                                                </div></td>
                                             </tr>
                      
                                         </tbody>

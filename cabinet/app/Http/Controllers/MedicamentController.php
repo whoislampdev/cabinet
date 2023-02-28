@@ -21,7 +21,7 @@ class MedicamentController extends Controller
 
         $medicament=Medicament::all();
 
-        return view('pharmacie.liste_medicament', compact('medicament'));
+        return view('medicament.liste_medicament', compact('medicament'));
 
     }
 
@@ -34,7 +34,7 @@ class MedicamentController extends Controller
     {
         $categories=TypeMedicament::all();
 
-        return view('pharmacie.newmedicament', compact('categories'));
+        return view('medicament.newmedicament', compact('categories'));
 
     }
 

@@ -32,10 +32,10 @@ Route::get('/caisse', function () {
 })->middleware(['auth', 'verified'])->name('caisse');
 
 
-// #caissiere Route
-// Route::middleware(['caisse']    )->group(function () {
-// Route::resource('acte', TypeTicketController::class);
-// });
+#caissiere Route
+Route::middleware(['caisse']    )->group(function () {
+Route::resource('acte', TypeTicketController::class);
+});
 #pharmacie route
 // Route::get('/pharmacie/medicament',[MedicamentController::class,'index'])->name('medicament.index');
 

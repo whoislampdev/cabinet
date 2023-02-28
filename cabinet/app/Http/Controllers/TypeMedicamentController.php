@@ -16,7 +16,7 @@ class TypeMedicamentController extends Controller
     public function index()
     {
 
-        return view('pharmacie.newcategorie');
+        return view('medicament.newcategorie');
         
     }
 
