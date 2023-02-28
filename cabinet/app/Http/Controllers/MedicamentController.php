@@ -13,24 +13,36 @@ class MedicamentController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+
+        $medicament=Medicament::all();
+
+        return view('pharmacie.liste_medicament', compact('medicament'));
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         $categories=TypeMedicament::all();
 
         return view('pharmacie.newmedicament', compact('categories'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StorePostRequest  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(StoreMedicamentRequest $request)
     {
@@ -45,22 +57,31 @@ class MedicamentController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
      */
     public function show(Medicament $medicament)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
      */
     public function edit(Medicament $medicament)
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdatePostRequest  $request
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdateMedicamentRequest $request, Medicament $medicament)
     {
@@ -69,9 +90,15 @@ class MedicamentController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Medicament $medicament)
     {
         //
     }
 }
+
+
+

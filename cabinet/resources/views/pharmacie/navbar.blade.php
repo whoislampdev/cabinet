@@ -21,7 +21,7 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="{{route('medicament.index')}}" class="dropdown-item notify-item">
+                                <a href="{{route('medicament.create')}}" class="dropdown-item notify-item">
                                     Medicament
                                 </a>
 

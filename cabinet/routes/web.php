@@ -33,6 +33,7 @@ Route::get('/caisse', function () {
 
 
 #pharmacie route
+// Route::get('/pharmacie/medicament',[MedicamentController::class,'index'])->name('medicament.index');
 
 Route::get('/pharmacie', function () {
     return view('pharmacie.index');
@@ -40,6 +41,9 @@ Route::get('/pharmacie', function () {
 
 Route::resource('categorie',TypeMedicamentController::class);
 Route::resource('medicament',MedicamentController::class);
+
+
+
 
 
 
