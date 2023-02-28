@@ -21,7 +21,7 @@ class CaissierMiddleware
             return redirect('/');
         }
 
-        if($user->profil != 'caisse') {
+        if($user->role != 'caisse') {
             return redirect('/');
         }
         return $next($request);

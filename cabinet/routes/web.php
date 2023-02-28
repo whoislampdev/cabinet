@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PersonnalController;
-use App\Http\Controllers\MedicamentController;
-use App\Http\Controllers\TypeMedicamentController;
+use App\Http\Controllers\{ProfileController,
+    TypeTicketController,
+    PersonnalController,
+    MedicamentController,
+    TypeMedicamentController};
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +32,10 @@ Route::get('/caisse', function () {
 })->middleware(['auth', 'verified'])->name('caisse');
 
 
-
-
+// #caissiere Route
+// Route::middleware(['caisse']    )->group(function () {
+// Route::resource('acte', TypeTicketController::class);
+// });
 #pharmacie route
 
 Route::get('/pharmacie', function () {

@@ -21,7 +21,7 @@ class AdminMiddleware
             return redirect('/');
         }
 
-        if($user->profil != 'admin') {
+        if($user->role != 'admin') {
             return redirect('/');
         }
         return $next($request);

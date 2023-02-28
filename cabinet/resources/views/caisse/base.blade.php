@@ -20,12 +20,19 @@
     </head>
 
     <body>
-    <div id="layout-wrapper">
-            <div class="header-border"></div>
+        <div id="layout-wrapper">
             @include('caisse.navbar')        
-            @include('caisse.sidebar')
-            @yield('main')
-    </div>
+                @include('caisse.sidebar')
+            <div class="header-border"></div>
+            <div class="main-content">
+    
+                <div class="page-content">
+                    <div class="container-fluid">
+                        @yield('main')
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>

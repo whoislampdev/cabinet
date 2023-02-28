@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\View\View;
 use App\Models\TypeTicket;
-use App\Http\Requests\StoreTypeTicketRequest;
+use App\Http\Requests\Request;
 use App\Http\Requests\UpdateTypeTicketRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -13,9 +13,9 @@ class TypeTicketController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        //
+        return view('Tickets.index');
     }
 
     /**
@@ -29,9 +29,27 @@ class TypeTicketController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTypeTicketRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'libelle' => ['required','unique:'.TypeTicket::class],
+            'montant' => ['required'],
+          
+        ]);
+        if($request->id==-1){
+        TypeTicket::create([
+            'nom'=>$request->libelle,
+            'prix'=>$request->montant
+        ]);
+    }else{
+        TypeTicket::where('id',$request['id'])
+        ->update([
+            'nom'=>$request->libelle,
+            'prix'=>$request->montant
+        
+        ]);
+    }
+    return redirect()->back()->withErrors($validator)->withInput();
     }
 
     /**

@@ -21,7 +21,7 @@ class pharmacieMiddleware
             return redirect('/');
         }
 
-        if($user->profil != 'pharmacie') {
+        if($user->role != 'pharmacie') {
             return redirect('/');
         }
         return $next($request);
