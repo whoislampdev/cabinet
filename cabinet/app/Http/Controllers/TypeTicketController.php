@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\TypeTicket;
-use App\Http\Requests\Request;
-use App\Http\Requests\UpdateTypeTicketRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TypeTicketController extends Controller
 {
@@ -21,9 +19,10 @@ class TypeTicketController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
-        //
+        $id=-1;
+        return view('Tickets.create');
     }
 
     /**
@@ -31,31 +30,35 @@ class TypeTicketController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->id == -1);
         $request->validate([
-            'libelle' => ['required','unique:'.TypeTicket::class],
-            'montant' => ['required'],
+            'nom' => ['required','unique:'.TypeTicket::class],
+            'prix' => ['required'],
           
         ]);
-        if($request->id==-1){
+        $user_id=Auth::user()->id;
+        // if($request->id == -1){
         TypeTicket::create([
-            'nom'=>$request->libelle,
-            'prix'=>$request->montant
+            'nom'=> $request->nom,
+            'prix'=> $request->prix,
+            'user_id'=> $user_id,
         ]);
-    }else{
-        TypeTicket::where('id',$request['id'])
-        ->update([
-            'nom'=>$request->libelle,
-            'prix'=>$request->montant
+    // }else{
+    //     TypeTicket::where('id',$request['id'])
+    //     ->update([
+    //         'nom'=>$request->nom,
+    //         'prix'=>$request->prix,
+    //         'user_id'=> $user_id,
         
-        ]);
-    }
-    return redirect()->back()->withErrors($validator)->withInput();
+    //     ]);
+    // }
+    return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(TypeTicket $typeTicket): Response
+    public function show(TypeTicket $typeTicket)
     {
         //
     }
@@ -71,7 +74,7 @@ class TypeTicketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTypeTicketRequest $request, TypeTicket $typeTicket): RedirectResponse
+    public function update(UpdateTypeTicketRequest $request, TypeTicket $typeTicket)
     {
         //
     }
@@ -79,7 +82,7 @@ class TypeTicketController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TypeTicket $typeTicket): RedirectResponse
+    public function destroy(TypeTicket $typeTicket)
     {
         //
     }
