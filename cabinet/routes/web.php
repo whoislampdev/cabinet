@@ -5,7 +5,7 @@ use App\Http\Controllers\{ProfileController,
     TypeTicketController,
     PersonnalController,
     MedicamentController,
-    TypeMedicamentController};
+    TypeMedicamentController, VenteMedicamentController};
 
 
 /*
@@ -30,6 +30,9 @@ Route::get('/admin', function () {
 Route::get('/caisse', function () {
     return view('caisse.index');
 })->middleware(['auth', 'verified'])->name('caisse');
+Route::get('/pharmacie', function () {
+    return view('pharmacie.index');
+})->middleware(['auth', 'verified'])->name('pharmacie');
 
 
 #caissiere Route
@@ -37,16 +40,13 @@ Route::middleware(['caisse']    )->group(function () {
 Route::resource('acte', TypeTicketController::class);
 });
 #pharmacie route
-// Route::get('/pharmacie/medicament',[MedicamentController::class,'index'])->name('medicament.index');
 
-Route::get('/pharmacie', function () {
-    return view('pharmacie.index');
-})->middleware(['auth', 'verified'])->name('pharmacie');
-
-Route::resource('categorie',TypeMedicamentController::class);
-Route::resource('medicament',MedicamentController::class);
-
-
+Route::middleware(['pharmacie'])->group(function(){
+    Route::resource('categorie',TypeMedicamentController::class);
+    Route::resource('medicament',MedicamentController::class);
+    Route::resource('vente',VenteMedicamentController::class);
+    
+    });
 
 
 

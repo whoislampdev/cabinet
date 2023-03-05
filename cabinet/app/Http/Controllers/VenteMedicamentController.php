@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\VenteMedicament;
 use App\Http\Requests\StoreVenteMedicamentRequest;
 use App\Http\Requests\UpdateVenteMedicamentRequest;
+use App\Models\Medicament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -13,7 +14,7 @@ class VenteMedicamentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         //
     }
@@ -21,15 +22,16 @@ class VenteMedicamentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
-        //
+        $med=Medicament::all();
+        return view('medicament.vendre_medicament',compact('med'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVenteMedicamentRequest $request): RedirectResponse
+    public function store(StoreVenteMedicamentRequest $request)
     {
         //
     }
@@ -37,7 +39,7 @@ class VenteMedicamentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(VenteMedicament $venteMedicament): Response
+    public function show(VenteMedicament $venteMedicament)
     {
         //
     }
@@ -45,7 +47,7 @@ class VenteMedicamentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(VenteMedicament $venteMedicament): Response
+    public function edit(VenteMedicament $venteMedicament)
     {
         //
     }
@@ -53,7 +55,7 @@ class VenteMedicamentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVenteMedicamentRequest $request, VenteMedicament $venteMedicament): RedirectResponse
+    public function update(UpdateVenteMedicamentRequest $request, VenteMedicament $venteMedicament)
     {
         //
     }
@@ -61,7 +63,7 @@ class VenteMedicamentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(VenteMedicament $venteMedicament): RedirectResponse
+    public function destroy(VenteMedicament $venteMedicament)
     {
         //
     }

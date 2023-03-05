@@ -30,7 +30,7 @@
                                                             Actions <i class="mdi mdi-chevron-down"></i>
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" href="#">Modifier</a>
+                                                            <a class="dropdown-item" href="{{route('categorie.edit', $tp)}}">Modifier</a>
                                                             <a class="dropdown-item" href="#">Voir</a>
                                                             <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                                                         </div>

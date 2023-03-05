@@ -25,10 +25,6 @@
                                     Medicament
                                 </a>
 
-                                <a href="{{route('medicament.index')}}" class="dropdown-item notify-item">
-                                    Vente
-                                </a>
-
                                 <!-- item-->
                                 <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     EMS System
@@ -141,8 +137,8 @@
                         <div class="dropdown d-inline-block ml-2">
                             <button type="button" class="btn header-item waves-effect"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"
-                                    alt="Header Avatar">
+                                <!-- <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"
+                                    alt="Header Avatar"> -->
                                 <span class="d-none d-sm-inline-block ml-1">{{ Auth::user()->prenom }} {{ Auth::user()->name }}</span>
                                 <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                             </button>
