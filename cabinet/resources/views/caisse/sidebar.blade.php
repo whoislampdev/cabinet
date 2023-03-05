@@ -26,8 +26,8 @@
                 <a href="javascript: void(0);" class="has-arrow waves-effect"><i
                         class="mdi mdi-diamond-stone"></i><span>Caisse</span></a>
                 <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="">Vendre Ticket</a></li>
-                    <li><a href="">Ticket Vendu</a></li>
+                    <li><a href="{{route('caisse')}}">Vendre Ticket</a></li>
+                    <li><a href="{{route('acte.create')}}">Ticket Vendu</a></li>
                     <li><a href="">Total vente journalier</a></li>
                     {{-- <li><a href="ui-cards.html">Cards</a></li>
                     <li><a href="ui-carousel.html">Carousel</a>
@@ -60,8 +60,8 @@
                 <a href="javascript: void(0);" class="has-arrow waves-effect"><i
                         class="mdi mdi-poll"></i><span>Gestion des Tickets</span></a>
                 <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="charts-morris.html">Liste Tickets</a></li>
-                    <li><a href="{{route('acte.index')}}">Nouveau  Tickets</a></li>
+                    <li><a href="{{route('acte.index')}}">Liste Tickets</a></li>
+                    <li><a href="{{route('acte.create')}}">Nouveau  Tickets</a></li>
                     {{-- <li><a href="charts-google.html">Google</a></li>
                     <li><a href="charts-chartjs.html">Chartjs</a></li>
                     <li><a href="charts-sparkline.html">Sparkline</a></li>

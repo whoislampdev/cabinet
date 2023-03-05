@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\User;
 return new class extends Migration
 {
     /**
@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('type_tickets', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->integer('prix')->default(0);
+            $table->string('prix')->default(0);
+            $table->foreignIdFor(User::class)->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

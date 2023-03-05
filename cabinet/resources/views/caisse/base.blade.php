@@ -13,9 +13,14 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/theme.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/theme.min.css" rel="stylesheet" type="text/css" />
+        <!-- datatable -->
+        <link href="../plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="../plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="../plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="../plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -34,11 +39,11 @@
             </div>
         </div>
         <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/metismenu.min.js"></script>
-        <script src="assets/js/waves.js"></script>
-        <script src="assets/js/simplebar.min.js"></script>
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/metismenu.min.js"></script>
+        <script src="../assets/js/waves.js"></script>
+        <script src="../assets/js/simplebar.min.js"></script>
 
 
         <!-- Sparkline Js-->
@@ -48,7 +53,7 @@
         <script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
 
         <!-- Chart Custom Js-->
-        <script src="assets/pages/knob-chart-demo.js"></script>
+        <script src="../assets/pages/knob-chart-demo.js"></script>
 
 
         <!-- Morris Js-->
@@ -58,10 +63,26 @@
         <script src="../plugins/raphael/raphael.min.js"></script>
 
         <!-- Custom Js -->
-        <script src="assets/pages/dashboard-demo.js"></script>
+        <script src="../assets/pages/dashboard-demo.js"></script>
 
         <!-- App js -->
-        <script src="assets/js/theme.js"></script>
+        <script src="../assets/js/theme.js"></script>
+        
+        <!-- datatable -->
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+        <script src="../plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="../plugins/datatables/responsive.bootstrap4.min.js"></script>
+        <script src="../plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="../plugins/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="../plugins/datatables/buttons.html5.min.js"></script>
+        <script src="../plugins/datatables/buttons.flash.min.js"></script>
+        <script src="../plugins/datatables/buttons.print.min.js"></script>
+        <script src="../plugins/datatables/dataTables.keyTable.min.js"></script>
+        <script src="../plugins/datatables/dataTables.select.min.js"></script>
+        <script src="../plugins/datatables/pdfmake.min.js"></script>
+        <script src="../plugins/datatables/vfs_fonts.js"></script>
+        <script src="assets/pages/datatables-demo.js"></script>
 
     </body>
 

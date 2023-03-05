@@ -8,7 +8,7 @@
         <div class="card-body">
             <h4 class="card-title" style="text-align:center">Vente Ticketing</h4>
             <p class="card-subtitle mb-4" style="text-align:center">caissiere du cabinet Medicale Yaye Fatou Ndiaye .</p>
-           <form action="">
+           <form action="{{route('ticket.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
             <div class="form-group col-sm-6">
@@ -37,8 +37,25 @@
             </div>
             <div class="form-group  col-sm-6">
                 <label>Type de Tickets</label>
+
                <select name="type_tickets" id="" class="form-control">
-                <option value="consultation">consultation</option>
+                @foreach ($all_acte as $acte )
+                    
+                @endforeach
+                <option value="{{$acte->nom}}">{{$acte->nom}} {{$acte->prix}}</option>
+              
+
+               </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label>Date Vente</label>
+                <input type="hidden" class="form-control" maxlength="25" name="date_vente"   value="<?php echo date("Y-m-d");?>" id="alloptions" />
+            </div>
+            <div class="form-group  col-sm-6">
+                <label>Heure de Vente </label>
+                <input type="hidden" class="form-control" maxlength="25" name="heure_vente"   value="<?php echo date("H:i:s");?>" id="alloptions" />
               
 
                </select>

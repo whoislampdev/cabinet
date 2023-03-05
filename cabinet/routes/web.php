@@ -1,11 +1,11 @@
 <?php
-
+  use App\Models\TypeTicket;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{ProfileController,
     TypeTicketController,
     PersonnalController,
     MedicamentController,
-    TypeMedicamentController, VenteMedicamentController};
+    TypeMedicamentController};
 
 
 /*
@@ -28,7 +28,10 @@ Route::get('/admin', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/caisse', function () {
-    return view('caisse.index');
+    $all_acte=TypeTicket::all();
+    return view('caisse.index',[
+        'all_acte'=>$all_acte       
+    ]);
 })->middleware(['auth', 'verified'])->name('caisse');
 Route::get('/pharmacie', function () {
     return view('pharmacie.index');
@@ -38,6 +41,7 @@ Route::get('/pharmacie', function () {
 #caissiere Route
 Route::middleware(['caisse']    )->group(function () {
 Route::resource('acte', TypeTicketController::class);
+Route::resource('ticket', TicketController::class);
 });
 #pharmacie route
 
