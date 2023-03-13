@@ -5,7 +5,11 @@ use App\Http\Controllers\{ProfileController,
     TypeTicketController,
     PersonnalController,
     MedicamentController,
-    TypeMedicamentController};
+    TypeMedicamentController,
+    VenteMedicamentController,
+    DetailsController,
+    VenteTicketController,
+    ChargeController};
 
 // >>>>>>> e72887a9479e501bd9961c4cf1905b768cab3f04
 
