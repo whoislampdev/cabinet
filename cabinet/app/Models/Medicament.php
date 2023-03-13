@@ -18,6 +18,10 @@ class Medicament extends Model
         self::creating(function($medicament){
             $medicament->user()->associate(auth()->user()->id);
             $medicament->type_medicament()->associate(request()->type_medicament);
+
+            self::updating(function($medicament){
+                $medicament->type_medicament()->associate(request()->type_medicament);
+            });
         });
     }
 

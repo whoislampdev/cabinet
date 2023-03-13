@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\TypeMedicament;
+// <<<<<<< HEAD
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreTypeMedicamentRequest;
+use App\Http\Requests\UpdateTypeMedicamentRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+
 
 class TypeMedicamentController extends Controller
 {
@@ -51,17 +58,26 @@ class TypeMedicamentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TypeMedicament $typeMedicament)
+    public function edit(TypeMedicament $type_medicament)
     {
-        //
+
+
+        return view('medicament.update_categorie',compact('type_medicament'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTypeMedicamentRequest $request, TypeMedicament $typeMedicament)
+    public function update(UpdateTypeMedicamentRequest $request, TypeMedicament $tp)
     {
-        //
+        $arrayUpdate=[
+            'nom'=>$request->nom,
+
+        ];
+
+        $tp=$tp->update($arrayUpdate);
+
+        return view('medicament.update_categorie',compact('tp'));
     }
 
     /**
@@ -72,3 +88,4 @@ class TypeMedicamentController extends Controller
         //
     }
 }
+?>

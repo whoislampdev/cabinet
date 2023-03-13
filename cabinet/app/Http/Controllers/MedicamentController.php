@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Medicament;
 
 use App\Models\TypeMedicament;
+// <<<<<<< HEAD
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+
 
 class MedicamentController extends Controller
 {
@@ -71,9 +77,13 @@ class MedicamentController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Medicament $medicament)
+    public function edit(Medicament $med)
     {
-        //
+        if (! Gate::denies('update-post', $med)) {
+            abort(403);
+        }
+        $med=TypeMedicament::all();
+        return view('medicament.update_medicament', compact('med'));
     }
     /**
      * Update the specified resource in storage.
@@ -82,9 +92,20 @@ class MedicamentController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMedicamentRequest $request, Medicament $medicament)
+    public function update(UpdateMedicamentRequest $request, Medicament $med)
     {
-        //
+        if (! Gate::allows('update-post', $med)) {
+            abort(403);
+        }
+        $arrayUpdate=[
+            'nom'=>$request->nom,
+            'prix'=>$request->prix,
+            'posologie'=>$request->posologie,
+            'quantite_disponible'=>$request->quantite_disponible,
+        ];
+
+        $med->update($arrayUpdate);
+        return back();
     }
 
     /**
@@ -99,5 +120,5 @@ class MedicamentController extends Controller
     }
 }
 
-
+?>
 

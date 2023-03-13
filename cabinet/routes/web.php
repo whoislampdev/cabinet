@@ -5,12 +5,9 @@ use App\Http\Controllers\{ProfileController,
     TypeTicketController,
     PersonnalController,
     MedicamentController,
-    TypeMedicamentController,
-    TicketController,
-    VenteTicketController,
-    ChargeController,
-    DetailsController};
- 
+    TypeMedicamentController};
+
+// >>>>>>> e72887a9479e501bd9961c4cf1905b768cab3f04
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +43,9 @@ Route::get('/caisse', function () {
         'id'=>$id       
     ]);
 })->middleware(['auth', 'verified'])->name('caisse');
+Route::get('/pharmacie', function () {
+    return view('pharmacie.index');
+})->middleware(['auth', 'verified'])->name('pharmacie');
 
 
 #caissiere Route
@@ -57,16 +57,13 @@ Route::resource('charges',ChargeController::class);
 Route::resource('Details',DetailsController::class);
 });
 #pharmacie route
-// Route::get('/pharmacie/medicament',[MedicamentController::class,'index'])->name('medicament.index');
 
-Route::get('/pharmacie', function () {
-    return view('pharmacie.index');
-})->middleware(['auth', 'verified'])->name('pharmacie');
-
-Route::resource('categorie',TypeMedicamentController::class);
-Route::resource('medicament',MedicamentController::class);
-
-
+Route::middleware(['pharmacie'])->group(function(){
+    Route::resource('categorie',TypeMedicamentController::class);
+    Route::resource('medicament',MedicamentController::class);
+    Route::resource('vente',VenteMedicamentController::class);
+    
+    });
 
 
 
