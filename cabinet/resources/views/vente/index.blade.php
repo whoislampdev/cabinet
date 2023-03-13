@@ -14,17 +14,23 @@
                                     <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                         <thead>
                                             <tr>
-                                                <th>Libelle</th>
-                                                <th>Montant</th>
-                                                {{-- <th>Date Cr</th> --}}
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>Type de  Ticket</th>
+                                                <th>Age </th>
+                                                <th>Date achat</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        @foreach($all_tickets as $ticket)
+                                        @foreach($all_vente_id as $vent)
+                                    
                                         <tbody>
                                             <tr>
-                                                <td>{{$ticket->nom}}</td>
-                                                <td>{{$ticket->prix}}</td>
+                                                <td>{{$vent->nom}}</td>
+                                                <td>{{$vent->prenom}}</td>
+                                                <td>{{$vent->acte}}</td>
+                                                <td>{{$vent->age}}</td>
+                                                <td>{{$vent->created_at->format('d / y / m')}}</td>
                                                 <td> <div class="col-6">
                                                     <div class="dropdown">
                                                         <button class="btn btn-info dropdown-toggle waves-effect waves-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,13 +39,15 @@
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                             <a class="dropdown-item" href="#">Modifier</a>
                                                             <a class="dropdown-item" href="#">Voir</a>
+                                                            <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                                                         </div>
                                                     </div>
                                                 </div></td>
                                             </tr>
+                     
                                         </tbody>
 
-                                        @endforeach         
+                                        @endforeach
                                     </table>
                                     
                                 </div> <!-- end card body-->

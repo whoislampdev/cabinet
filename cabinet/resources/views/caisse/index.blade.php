@@ -12,6 +12,7 @@
             @csrf
             <div class="row">
             <div class="form-group col-sm-6">
+                <input type="hidden" class="form-control" maxlength="25" name="id" value="{{$id}}" id="defaultconfig" />
                 <label>Nom</label>
                 <input type="text" class="form-control" maxlength="25" name="nom" id="defaultconfig" />
             </div>
@@ -38,24 +39,26 @@
             <div class="form-group  col-sm-6">
                 <label>Type de Tickets</label>
 
-               <select name="type_tickets" id="" class="form-control">
-                @foreach ($all_acte as $acte )
+               <select name="acte" id="" class="form-control">
+                @forelse($all_acte as $acte )
                     
-                @endforeach
+               
                 <option value="{{$acte->nom}}">{{$acte->nom}} {{$acte->prix}}</option>
-              
-
+              @empty
+              <option value="">pas de Categorie</option>
+              @endforelse
                </select>
+              
             </div>
         </div>
         <div class="row">
             <div class="form-group col-sm-6">
                 <label>Date Vente</label>
-                <input type="hidden" class="form-control" maxlength="25" name="date_vente"   value="<?php echo date("Y-m-d");?>" id="alloptions" />
+                <input type="date" class="form-control" maxlength="25" name="date_vente"   value="<?php echo date("Y-m-d");?>" id="alloptions" />
             </div>
-            <div class="form-group  col-sm-6">
+            <div class="form-group col-sm-6">
                 <label>Heure de Vente </label>
-                <input type="hidden" class="form-control" maxlength="25" name="heure_vente"   value="<?php echo date("H:i:s");?>" id="alloptions" />
+                <input type="time" class="form-control" maxlength="25" name="heure_vente"   value="<?php echo date("H:i:s");?>" id="alloptions" />
               
 
                </select>

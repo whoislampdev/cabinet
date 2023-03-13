@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// require __DIR__ . '/../../vendor/autoload.php';
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+
 
 class TicketController extends Controller
 {
@@ -25,7 +29,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        
+            
     }
 
     /**
@@ -33,8 +37,19 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        $request->validate([
+    //    impression
+        // // $connector = null;
+        // $connector = new WindowsPrintConnector("Xprinter XP-90");
+        // // dd($connector);
+        // /* Print a "Hello world" receipt" */
+        // $printer = new Printer($connector);
+        // $printer->text("Hello World!\n");
+        // $printer->cut();
+        // $printer->close();
+
+        // dd($printer);
+        // dd($request->id==-1);
+        $validator=$request->validate([
             'nom' => ['required'],
             'prenom' => ['required'],
             'adresse' => ['required'],
@@ -46,7 +61,8 @@ class TicketController extends Controller
             
           
         ]);
-        if($request->id==-1){
+      
+        // if($request->id == -1){
         Ticket::create([
             'nom' =>$request->nom,
             'prenom' =>$request->prenom,
@@ -58,20 +74,20 @@ class TicketController extends Controller
             'age' =>$request->age,
             'user_id'=>Auth::user()->id,
         ]);
-    }else{
-        Ticket::where('id',$request['id'])
-        ->update([
-            'nom' =>$request->nom,
-            'prenom' =>$request->prenom,
-            'adresse' =>$request->adresse,
-            'acte' =>$request->acte,
-            'telephone' =>$request->telephone,
-            'date_vente' =>$request->date_vente,
-            'heure_vente' =>$request->heure_vente,
-            'age' =>$request->age,
+    // }else{
+    //     Ticket::where('id',$request['id'])
+    //     ->update([
+    //         'nom' =>$request->nom,
+    //         'prenom' =>$request->prenom,
+    //         'adresse' =>$request->adresse,
+    //         'acte' =>$request->acte,
+    //         'telephone' =>$request->telephone,
+    //         'date_vente' =>$request->date_vente,
+    //         'heure_vente' =>$request->heure_vente,
+    //         'age' =>$request->age,
         
-        ]);
-    }
+    //     ]);
+    // }
     return redirect()->back()->withErrors($validator)->withInput();
     }
 

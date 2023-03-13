@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Medicament;
-use App\Http\Requests\StoreMedicamentRequest;
-use App\Http\Requests\UpdateMedicamentRequest;
+
 use App\Models\TypeMedicament;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicamentController extends Controller
 {
@@ -44,7 +43,7 @@ class MedicamentController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMedicamentRequest $request)
+    public function store(Request $request)
     {
         Medicament::create([
             'nom'=>$request->nom,

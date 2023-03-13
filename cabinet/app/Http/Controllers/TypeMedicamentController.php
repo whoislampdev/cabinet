@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\TypeMedicament;
-use App\Http\Requests\StoreTypeMedicamentRequest;
-use App\Http\Requests\UpdateTypeMedicamentRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TypeMedicamentController extends Controller
 {
@@ -39,7 +37,7 @@ class TypeMedicamentController extends Controller
         TypeMedicament::create([
             'nom'=>$request->nom,
         ]);
-        return back();
+        return redirect()->back();
     }
 
     /**

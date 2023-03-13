@@ -9,22 +9,19 @@
                                 <div class="card-body">
 
                                     <h4 style="text-align: center;" class="card-title">LISTE DES VENTES</h4>
-
-
                                     <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                         <thead>
                                             <tr>
                                                 <th>Libelle</th>
                                                 <th>Montant</th>
-                                                {{-- <th>Date Cr</th> --}}
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        @foreach($all_tickets as $ticket)
+                                        @foreach($liste_charge as $charge)
                                         <tbody>
                                             <tr>
-                                                <td>{{$ticket->nom}}</td>
-                                                <td>{{$ticket->prix}}</td>
+                                                <td>{{$charge->libelle}}</td>
+                                                <td>{{$charge->montant}}</td>
                                                 <td> <div class="col-6">
                                                     <div class="dropdown">
                                                         <button class="btn btn-info dropdown-toggle waves-effect waves-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,9 +36,8 @@
                                             </tr>
                                         </tbody>
 
-                                        @endforeach         
+                                        @endforeach
                                     </table>
-                                    
                                 </div> <!-- end card body-->
                             </div> <!-- end card -->
                         </div><!-- end col-->

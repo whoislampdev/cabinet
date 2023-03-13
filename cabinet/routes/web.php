@@ -6,8 +6,11 @@ use App\Http\Controllers\{ProfileController,
     PersonnalController,
     MedicamentController,
     TypeMedicamentController,
-    TicketController};
-  
+    TicketController,
+    VenteTicketController,
+    ChargeController,
+    DetailsController};
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +32,18 @@ Route::get('/admin', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/caisse', function () {
+    $id=-1;
     $all_acte=TypeTicket::all();
+    // $connector = null;
+    // $connector = new WindowsPrintConnector("Generic  Text Only");
+
+    // /* Print a "Hello world" receipt" */
+    // $printer = new Printer($connector);
+    // $printer -> text("Hello World!\n");
+    // $printer -> cut();
     return view('caisse.index',[
-        'all_acte'=>$all_acte       
+        'all_acte'=>$all_acte,
+        'id'=>$id       
     ]);
 })->middleware(['auth', 'verified'])->name('caisse');
 
@@ -40,6 +52,9 @@ Route::get('/caisse', function () {
 Route::middleware(['caisse']    )->group(function () {
 Route::resource('acte', TypeTicketController::class);
 Route::resource('ticket', TicketController::class);
+Route::resource('Vente', VenteTicketController::class);
+Route::resource('charges',ChargeController::class);
+Route::resource('Details',DetailsController::class);
 });
 #pharmacie route
 // Route::get('/pharmacie/medicament',[MedicamentController::class,'index'])->name('medicament.index');
