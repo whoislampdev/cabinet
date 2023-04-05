@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\VenteTicket;
-use App\Http\Requests\StoreVenteTicketRequest;
-use App\Http\Requests\UpdateVenteTicketRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Ticket;
 class VenteTicketController extends Controller
 {
     /**
@@ -15,7 +12,12 @@ class VenteTicketController extends Controller
      */
     public function index()
     {
-        //
+        $request=Auth::user()->id;
+       $all_vente_id=Ticket::where('user_id',$request)->get();
+    //    dd($all_vente_id);    
+        return view('vente.index',[
+            'all_vente_id'=>$all_vente_id
+        ]);
     }
 
     /**

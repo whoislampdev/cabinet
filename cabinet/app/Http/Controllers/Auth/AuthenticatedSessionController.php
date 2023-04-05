@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+use App\Models\UserDateLog;
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -28,6 +30,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        // UserDateLog::create([]);
 
         if (Auth::user()->role === 'admin') {
             return redirect()->intended(RouteServiceProvider::ADMIN);

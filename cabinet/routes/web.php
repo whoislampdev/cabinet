@@ -5,8 +5,13 @@ use App\Http\Controllers\{ProfileController,
     TypeTicketController,
     PersonnalController,
     MedicamentController,
-    TypeMedicamentController};
+    TypeMedicamentController,
+    VenteMedicamentController,
+    DetailsController,
+    VenteTicketController,
+    ChargeController};
 
+// >>>>>>> e72887a9479e501bd9961c4cf1905b768cab3f04
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +33,18 @@ Route::get('/admin', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/caisse', function () {
+    $id=-1;
     $all_acte=TypeTicket::all();
+    // $connector = null;
+    // $connector = new WindowsPrintConnector("Generic  Text Only");
+
+    // /* Print a "Hello world" receipt" */
+    // $printer = new Printer($connector);
+    // $printer -> text("Hello World!\n");
+    // $printer -> cut();
     return view('caisse.index',[
-        'all_acte'=>$all_acte       
+        'all_acte'=>$all_acte,
+        'id'=>$id       
     ]);
 })->middleware(['auth', 'verified'])->name('caisse');
 Route::get('/pharmacie', function () {
@@ -42,6 +56,9 @@ Route::get('/pharmacie', function () {
 Route::middleware(['caisse']    )->group(function () {
 Route::resource('acte', TypeTicketController::class);
 Route::resource('ticket', TicketController::class);
+Route::resource('Vente', VenteTicketController::class);
+Route::resource('charges',ChargeController::class);
+Route::resource('Details',DetailsController::class);
 });
 #pharmacie route
 

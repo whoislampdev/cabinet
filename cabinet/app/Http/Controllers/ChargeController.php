@@ -1,21 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\View\View;
-use App\Models\TypeTicket;
+
 use Illuminate\Http\Request;
+use App\Models\Charges;
 use Illuminate\Support\Facades\Auth;
 
-class TypeTicketController extends Controller
+class ChargeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $all_tickets=TypeTicket::all();
-        return view('Tickets.index',[
-            'all_tickets'=>$all_tickets
+        $liste_charge=Charges::where('user_id',Auth::user()->id)->get();
+        return view("charge.index",[
+            'liste_charge'=> $liste_charge
         ]);
     }
 
@@ -24,8 +24,7 @@ class TypeTicketController extends Controller
      */
     public function create()
     {
-        $id=-1;
-        return view('Tickets.create');
+        return view("charge.create");
     }
 
     /**
@@ -33,18 +32,18 @@ class TypeTicketController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->id == -1);
-        $request->validate([
-            'nom' => ['required','unique:'.TypeTicket::class],
-            'prix' => ['required'],
+        //  dd($request);
+         $request->validate([
+            'libelle' =>['required'],
+            'montant' =>['required'],
           
         ]);
         $user_id=Auth::user()->id;
         // if($request->id == -1){
-        TypeTicket::create([
-            'nom'=> $request->nom,
-            'prix'=> $request->prix,
-            'user_id'=> $user_id,
+        Charges::create([
+            'libelle'=> $request->libelle,
+            'montant'=> $request->montant,
+            'user_id'=> Auth::user()->id,
         ]);
     // }else{
     //     TypeTicket::where('id',$request['id'])
@@ -61,7 +60,7 @@ class TypeTicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TypeTicket $typeTicket)
+    public function show(string $id)
     {
         //
     }
@@ -69,7 +68,7 @@ class TypeTicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TypeTicket $typeTicket): Response
+    public function edit(string $id)
     {
         //
     }
@@ -77,7 +76,7 @@ class TypeTicketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTypeTicketRequest $request, TypeTicket $typeTicket)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -85,7 +84,7 @@ class TypeTicketController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TypeTicket $typeTicket)
+    public function destroy(string $id)
     {
         //
     }

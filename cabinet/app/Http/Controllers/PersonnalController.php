@@ -39,7 +39,7 @@ class PersonnalController extends Controller
     {
         // dd($request);
         // validation des donnees
-        $request->validate([
+       $validator=$request->validate([
             'telephone' => ['required'],
             'role' => ['required'],
             'fonction' => ['required'],
@@ -65,7 +65,7 @@ class PersonnalController extends Controller
             'email'=>$request->email,
             'password'=> Hash::make($request->password)
         ]);
-        return back();
+         return redirect()->back()->withErrors($validator)->withInput();
 
     }
 

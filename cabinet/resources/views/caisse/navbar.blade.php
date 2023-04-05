@@ -14,26 +14,22 @@
                                 <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                             </button>
                             <div class="dropdown-menu">
+ <ul>
+    
+ </ul>
+                                <!-- item-->
+                               <a href="{{route('acte.create')}}" class="dropdown-item notify-item">Nouveau  Tickets</a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    Application
-                                </a>
+                                <li><a href="{{route('charges.create')}}" class="dropdown-item notify-item">Add Charge</a></li>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    Software
-                                </a>
+                                <a href="{{route('caisse')}}" class="dropdown-item notify-item">Vendre Ticket</a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    EMS System
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     CRM App
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </div>
