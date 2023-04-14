@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 // require __DIR__ . '/../../vendor/autoload.php';
 use App\Models\Ticket;
+use App\Models\TypeTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
