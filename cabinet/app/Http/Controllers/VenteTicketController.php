@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VenteTicket;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Ticket;
+use App\Models\{Ticket,UserDateLog};
 class VenteTicketController extends Controller
 {
     /**
@@ -13,7 +13,11 @@ class VenteTicketController extends Controller
     public function index()
     {
         $request=Auth::user()->id;
-       $all_vente_id=Ticket::where('user_id',$request)->get();
+      
+       $date_log=UserDateLog::where('use_id', Auth::user()->id)->
+       orderBy('created_at', 'desc')->first();
+       $all_vente_id=Ticket::where('user_id',$request)->
+       where('date_vente',$date_log->date_log)->get();
     //    dd($all_vente_id);    
         return view('vente.index',[
             'all_vente_id'=>$all_vente_id

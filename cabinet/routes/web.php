@@ -9,7 +9,9 @@ use App\Http\Controllers\{ProfileController,
     VenteMedicamentController,
     DetailsController,
     VenteTicketController,
-    ChargeController};
+    ChargeController,
+    RapportCaisseController,
+    TicketController};
 
 // >>>>>>> e72887a9479e501bd9961c4cf1905b768cab3f04
 
@@ -54,11 +56,12 @@ Route::get('/pharmacie', function () {
 
 #caissiere Route
 Route::middleware(['caisse']    )->group(function () {
-Route::resource('acte', TypeTicketController::class);
-Route::resource('ticket', TicketController::class);
-Route::resource('Vente', VenteTicketController::class);
-Route::resource('charges',ChargeController::class);
-Route::resource('Details',DetailsController::class);
+    Route::resource('acte', TypeTicketController::class);
+    Route::resource('ticket', TicketController::class);
+    Route::resource('Vente', VenteTicketController::class);
+    Route::resource('charges',ChargeController::class);
+    Route::resource('Details',DetailsController::class);
+    Route::resource('rapport', RapportCaisseController::class);
 });
 #pharmacie route
 
@@ -68,13 +71,6 @@ Route::middleware(['pharmacie'])->group(function(){
     Route::resource('vente',VenteMedicamentController::class);
     
     });
-
-
-
-
-
-
-
 #registration and login
 
 Route::middleware('auth')->group(function () {
@@ -86,3 +82,4 @@ Route::resource('personnals', PersonnalController::class);
 
 
 require __DIR__.'/auth.php';
+?>

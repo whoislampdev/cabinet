@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_date_logs', function (Blueprint $table) {
             $table->id();
-            $table->string("date_log");
+            $table->date("date_log");
             $table->integer("use_id");
             $table->timestamps();
         });

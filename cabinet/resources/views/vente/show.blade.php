@@ -42,7 +42,7 @@
                 <div class="row d-flex align-items-center mb-4">
                     <div class="col-8">
                         <h2 class="d-flex align-items-center mb-0">
-                            <span>1</span>
+                            <span>{{$cout_vente}}</span>
                         </h2>
                     </div>
                     {{-- <div class="col-4 text-right">

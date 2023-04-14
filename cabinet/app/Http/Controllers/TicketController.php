@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\EscposImage;
 
 
 class TicketController extends Controller
@@ -37,18 +38,10 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-    //    impression
-        // // $connector = null;
-        // $connector = new WindowsPrintConnector("Xprinter XP-90");
-        // // dd($connector);
-        // /* Print a "Hello world" receipt" */
-        // $printer = new Printer($connector);
-        // $printer->text("Hello World!\n");
-        // $printer->cut();
-        // $printer->close();
-
+  
         // dd($printer);
         // dd($request->id==-1);
+        // $montant=TypeTicket::where('nom',$request->acte)->first();
         $validator=$request->validate([
             'nom' => ['required'],
             'prenom' => ['required'],
@@ -63,7 +56,7 @@ class TicketController extends Controller
         ]);
       
         // if($request->id == -1){
-        Ticket::create([
+       $ticket= Ticket::create([
             'nom' =>$request->nom,
             'prenom' =>$request->prenom,
             'adresse' =>$request->adresse,
@@ -88,6 +81,33 @@ class TicketController extends Controller
         
     //     ]);
     // }
+      //    impression
+        // // $connector = null;
+        $connector = new WindowsPrintConnector("AURES ODP-333");
+        // dd($connector);
+        /* Print a "Hello world" receipt" */
+        $printer = new Printer($connector);
+        $img = EscposImage::load("assets\images\media\logo\log.png");
+        $printer->graphics($img,);
+        $printer->text("Cabinet Medical Yaye fatou Ndiaye!\n");
+        $printer->feed(1);
+        $printer->text('PRENOM et NOM :'.$ticket->prenom.' '.$ticket->nom);
+        $printer->feed(1);
+        $printer->text('ADRESSE :'.$ticket->adresse);
+        $printer->feed(1);
+        $printer->text('AGE :'.$ticket->age);
+        $printer->feed(1);
+        $printer->text('DATE :'.$ticket->date_vente);
+        $printer->feed(1);
+        $printer->text('ACTE :'.$ticket->acte);
+        $printer->feed(1);
+        $printer->text('---------------------------');
+        $printer->feed(1);
+        $printer -> cut();
+        // $printer->text('---------------------------');
+
+        $printer->close();
+
     return redirect()->back()->withErrors($validator)->withInput();
     }
 
@@ -123,3 +143,4 @@ class TicketController extends Controller
         //
     }
 }
+?>

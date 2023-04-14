@@ -30,7 +30,10 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        // UserDateLog::create([]);
+        UserDateLog::create([
+            'date_log'=>date('Y-m-d'),
+            'use_id'=>Auth::user()->id
+        ]);
 
         if (Auth::user()->role === 'admin') {
             return redirect()->intended(RouteServiceProvider::ADMIN);
