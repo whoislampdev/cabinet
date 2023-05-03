@@ -24,22 +24,22 @@
 
 
                 <div class="row">
-                    <div class="col-md-6 col-xl-3">
+                    <div class="col-md-6 col-xl-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
-                                    <span class="badge badge-soft-primary float-right">Daily</span>
+                                    <span class="badge badge-soft-primary float-right">all</span>
                                     <h5 class="card-title mb-0">Nombres de Patients</h5>
                                 </div>
                                 <div class="row d-flex align-items-center mb-4">
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0">
-                                            125
+                                            {{$count_ticket}}
                                         </h2>
                                     </div>
-                                    <!-- <div class="col-4 text-right">
-                                        <span class="text-muted">12.5% <i class="mdi mdi-arrow-up text-success"></i></span>
-                                    </div> -->
+                                    <div class="col-4 text-right">
+                                        <span class="text-muted">% <i class="mdi mdi-arrow-up text-success"></i></span>
+                                    </div> 
                                 </div>
 
                                 <div class="progress shadow-sm" style="height: 5px;">
@@ -51,17 +51,17 @@
                         </div><!-- end card-->
                     </div> <!-- end col-->
 
-                    <div class="col-md-6 col-xl-3">
+                    <div class="col-md-6 col-xl-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-4">
-                                    <span class="badge badge-soft-primary float-right">Per Week</span>
-                                    <h5 class="card-title mb-0">Stock Medicament</h5>
+                                    <span class="badge badge-soft-primary float-right">all</span>
+                                    <h5 class="card-title mb-0">Type  Medicament</h5>
                                 </div>
                                 <div class="row d-flex align-items-center mb-4">
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0">
-                                            269
+                                            {{$count_typemedocs}}
                                         </h2>
                                     </div>
                                     <!-- <div class="col-4 text-right">
@@ -77,18 +77,19 @@
                             <!--end card body-->
                         </div><!-- end card-->
                     </div> <!-- end col-->
-
-                    <div class="col-md-6 col-xl-3">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xl-6">
                         <div class="card">
                             <div class="card-body">
-                                <div class="mb-4">
-                                    <span class="badge badge-soft-primary float-right">Per Month</span>
-                                    <h5 class="card-title mb-0">Ticket Vendu</h5>
+                                <div class="mb-6">
+                                    <span class="badge badge-soft-primary float-right">all</span>
+                                    <h5 class="card-title mb-0">Medicament</h5>
                                 </div>
                                 <div class="row d-flex align-items-center mb-4">
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0">
-                                            369
+                                        {{$count_medocs}}
                                         </h2>
                                     </div>
                                     <!-- <div class="col-4 text-right">
@@ -106,17 +107,17 @@
                         <!--end card-->
                     </div> <!-- end col-->
 
-                    <div class="col-md-6 col-xl-3">
+                    <div class="col-md-6 col-xl-6">
                         <div class="card">
                             <div class="card-body">
-                                <div class="mb-4">
-                                    <span class="badge badge-soft-primary float-right">All Time</span>
+                                <div class="mb-6">
+                                    <span class="badge badge-soft-primary float-right">All</span>
                                     <h5 class="card-title mb-0">Nombre utilisateur</h5>
                                 </div>
                                 <div class="row d-flex align-items-center mb-4">
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0">
-                                           6
+                                           {{$count_personnals}}
                                         </h2>
                                     </div>
                                     <!-- <div class="col-4 text-right">

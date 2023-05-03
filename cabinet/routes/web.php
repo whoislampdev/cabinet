@@ -1,5 +1,5 @@
 <?php
-  use App\Models\TypeTicket;
+  use App\Models\{TypeTicket,Ticket,TypeMedicament,Medicament, Personnals};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{ProfileController,
     TypeTicketController,
@@ -11,7 +11,11 @@ use App\Http\Controllers\{ProfileController,
     VenteTicketController,
     ChargeController,
     RapportCaisseController,
-    TicketController};
+    TicketController,
+    AdminCaisseController,
+    AdminJsController,
+    adminDetailsController,
+    RapportPersoController};
 
 // >>>>>>> e72887a9479e501bd9961c4cf1905b768cab3f04
 
@@ -31,7 +35,17 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function () {
-    return view('admin.index');
+    $count_ticket=Ticket::all()->count();
+    $count_personnals=Personnals::all()->count();
+    $count_medocs=Medicament::all()->count();
+    $count_typemedocs=TypeMedicament::all()->count();
+    return view('admin.index',[
+        'count_ticket'=>$count_ticket,
+        'count_medocs'=>$count_medocs,
+        'count_typemedocs'=>$count_typemedocs,
+        'count_personnals'=>$count_personnals
+    ]);
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/caisse', function () {
@@ -71,6 +85,17 @@ Route::middleware(['pharmacie'])->group(function(){
     Route::resource('vente',VenteMedicamentController::class);
     
     });
+    Route::middleware(['admin'])->group( function ()
+    {
+        // Route::resource('admincaisse', AdminCaisseController::class);
+        Route::post('admincaisse',[AdminJsController::class,'data_by_mois']);
+        Route::get('admincaisse',[AdminJsController::class,'index']);
+        Route::get('admincaisse-rapport',[adminDetailsController::class,'index']);
+        Route::post('admincaisse-rapport',[adminDetailsController::class,'data_by_mois']);
+        route::get('admin-user',[RapportPersoController::class,'index']);
+        Route::resource('personnals', PersonnalController::class);
+    });
+ 
 #registration and login
 
 Route::middleware('auth')->group(function () {
@@ -78,7 +103,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::resource('personnals', PersonnalController::class);
+
 
 
 require __DIR__.'/auth.php';

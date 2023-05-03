@@ -16,22 +16,22 @@
                             <div class="dropdown-menu">
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="" class="dropdown-item notify-item">
                                     Application
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="" class="dropdown-item notify-item">
                                     Software
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="" class="dropdown-item notify-item">
                                     EMS System
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="" class="dropdown-item notify-item">
                                     CRM App
                                 </a>
                             </div>

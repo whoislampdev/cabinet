@@ -72,17 +72,23 @@ class PersonnalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $user=User::find($id);
+        $personnal=Personnals::where('email',$user->email)->get();
+        return $personnal;
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $user=User::find($id);
+        // return $user;
+        $personnal=Personnals::where('email',$user->email)->get();
+        return $personnal;
     }
 
     /**
