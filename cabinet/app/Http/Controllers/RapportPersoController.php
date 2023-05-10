@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Ticket,UserDateLog,Personnals,User};
+use App\Models\{Ticket,UserDateLog,Personnals,User,TypeTicket};
 class RapportPersoController extends Controller
 {
     public static $date=array(1=>'Janvier',2=>'Fevrier',3=>'Mars',4=>'Avril',5=>'Mai',6=>'Juin',7 =>'Juillet',8 =>'Aout',9=>'Septembre',10=>'Octobre',11 =>'Novembre',12 => 'Decembre');
@@ -14,9 +14,10 @@ class RapportPersoController extends Controller
     {
         $currentMonth='';
         $curentDay='';
- 
+        $role='caisse';
+
         $all_ticket=Ticket::all();
-        $all_users=User::where('role','caisse')->get();
+        $all_users=User::where('role',$role)->get();
         // $all_ticket=
         // return $all_ticket;
         foreach($all_ticket as $all){
@@ -33,7 +34,7 @@ class RapportPersoController extends Controller
             // dd(self::$year);
             
            
-            if($currentMonth == $monthToCompare && $JourToCompare==$curentDay && $currentAgents== $all->user_id){
+            if($currentMonth == $monthToCompare && $JourToCompare==$curentDay && $currentAgents == $all->user_id){
             self::$data[]=$all;
             }
            
@@ -55,32 +56,35 @@ class RapportPersoController extends Controller
         $currentMonth=$request->mois;
         $curentDay=$request->jour;
         $currentAgents=$request->user_id;
-        // $currentMonth=date('m',$currentMonth);
-        
-        $all_tickets=Ticket::where('user_id',$currentAgents)->get();
-        // $all_ticket=
-        // return $all_ticket;
-        foreach($all_tickets as $all){
-            $monthToCompare = date('m', strtotime($all->date_vente));
-            $DayToCompare = date('d', strtotime($all->date_vente));
-
-            if($monthToCompare<=10){
-            $monthToCompare = str_replace(0, '', $monthToCompare);
-        }
-         if($currentMonth == $monthToCompare && $curentDay == $DayToCompare){
-            // self::$all_ticket=$all+;
-            // $montant=TypeTickets::all();
-            // foreach($montant as $type_ticket){
-                // foreach($date_log as $date){
-            if($type_ticket->nom === $all->acte){
-                // return $type_ticket->prix;
-                 self::$all_ticket+=$all->prix;
+        // $users=User::find($currentAgents);
+        $date=UserDateLog::where('use_id', $currentAgents)->
+        orderBy('created_at', 'desc')->first();
+    
             
+            $all_tickets=Ticket::where('user_id',$currentAgents)->get();
+            $all_typeTicket=TypeTicket::all();
+    
+            foreach($all_tickets as $all){
+                $monthToCompare = date('m', strtotime($all->date_vente));
+                $DayToCompare = date('d', strtotime($all->date_vente));
+                // $agentsTocompare=$all->user_id;
+               
+    
+                if($monthToCompare<=10){
+                $monthToCompare = str_replace(0, '', $monthToCompare);
             }
-        // }
-            // return 'ok';
+            if($currentMonth == $monthToCompare && $curentDay == $DayToCompare ){
+            foreach($all_typeTicket as $type_ticket){
+        
+             if($type_ticket->nom == $all->acte){
+              
+                    self::$all_ticket+=$type_ticket->prix;
+                    }
+                
             }
-            // return self::$all_tickets;
+        }
+            
+          
         }
         echo json_encode(self::$all_ticket);
     }

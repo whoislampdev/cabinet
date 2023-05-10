@@ -21,10 +21,10 @@
         {{-- @csrf --}}
         <select name="user_id" id="user_id" class="select-form form-control col-sm-3">
             <option value="">Agents</option>
-            @foreach ($all_users as $key =>$m )
+            @foreach ($all_users as $U )
                 
             {{-- @endforeach($mois as $key =>$m) --}}
-            <option value="{{$m->id}}">{{$m->name}}</option>
+            <option value="{{$U->id}}">{{$U->name}}</option>
 
            @endforeach
         </select>
@@ -67,16 +67,17 @@
    
     var mois = $('#mois').val();
     var jour = $('#jour').val();
-    var user_id = $('#user_id').val();
+    var user_id =$('#user_id').val();
     // var end_date = $('#kt_date_end').val();
     console.log(mois);
     console.log(jour);
+    console.log('user'+user_id);
 
   
     $.ajax({
         type: 'POST',
-        url: "{{url('admincaisse-rapport')}}",
-        data: {"mois":mois,'jour':jour,user_id:'user_id'},
+        url: "{{url('admin-user')}}",
+        data: {"mois":mois,'jour':jour,'user_id':user_id},
         dataType: 'JSON',
         success: function (results) {
           console.log(results);

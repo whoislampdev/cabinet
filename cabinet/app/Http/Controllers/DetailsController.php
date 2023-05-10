@@ -10,31 +10,29 @@ class DetailsController extends Controller
     /**
      * Display a listing of the resource.
      */
-     public static  $Montant_total=0;
+     public static  $Montant=0;
      public static  $count=0;
     public function index()
     {
-
-     
         $total_vente=Ticket::where('user_id', Auth::user()->id)->get();
-        // dd($total_vente);
-       
-        $date_log=UserDateLog::where('use_id', Auth::user()->id)->
-        orderBy('created_at', 'desc')->first();
-        // $date_log_group=UserDateLog::groupBy('date_log')->get();
-        //  dd($date_log_group);
+     
         // total  vente journalier
+        $montant=TypeTicket::all();
+
+        $date=UserDateLog::where('use_id', Auth::user()->id)->
+        orderBy('created_at', 'desc')->first();
         foreach($total_vente as $vente){
-           
-            // $this->Montant_total += $vente->montant;    
-            $montant=TypeTicket::where('user_id', Auth::user()->id)->get();
-            foreach($montant as $type_ticket){
-                // foreach($date_log as $date){
-            if($type_ticket->nom === $vente->acte && $date_log->date_log === $vente->date_vente){
-                // return $type_ticket->prix;
-                 self::$Montant_total+= $type_ticket->prix;
+         
             
-            }
+          if($date->date_log === $vente->date_vente){
+            foreach($montant as $type_ticket){
+                
+                if($type_ticket->nom === $vente->acte ){
+                    // return $type_ticket->prix;
+                    self::$Montant+=$type_ticket->prix;
+                
+                }
+        }
         // }
             
             }
@@ -58,7 +56,7 @@ class DetailsController extends Controller
         }
         // dd(self::$Montant_total);
         return view('vente.show',[
-            'Montant_total'=>self::$Montant_total,
+            'Montant_total'=>self::$Montant,
             'cout_vente'=>self::$count
         ]);
     
