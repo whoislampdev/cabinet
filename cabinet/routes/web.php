@@ -103,6 +103,7 @@ Route::middleware(['pharmacie'])->group(function(){
         Route::get('admincaisse-rapport',[adminDetailsController::class,'index']);
         Route::post('admincaisse-rapport',[adminDetailsController::class,'data_by_mois']);
         route::get('admin-user',[RapportPersoController::class,'index']);
+        route::Post('admin-user',[RapportPersoController::class,'data_by_mois']);
         Route::resource('personnals', PersonnalController::class);
     });
  

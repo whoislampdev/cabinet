@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\{Ticket,TypeTicket};
+use App\Models\{Ticket,TypeTicket,User};
 use Illuminate\Http\Request;
 
 class adminDetailsController extends Controller
@@ -16,6 +16,7 @@ class adminDetailsController extends Controller
         $curentDay='';
  
         $all_ticket=Ticket::all();
+        $all_users=User::all();
         // $all_ticket=
         // return $all_ticket;
         foreach($all_ticket as $all){
@@ -45,7 +46,8 @@ class adminDetailsController extends Controller
         return view('AdminRapport.rapportindex',[
             'mois'=>self::$mois,
             'jour'=>self::$jour,
-            'all_ticket'=>$all_ticket
+            'all_ticket'=>$all_ticket,
+            'all_users'=>$all_users
         ]);
     }
     public function data_by_mois(Request $request){

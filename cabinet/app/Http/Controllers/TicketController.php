@@ -84,6 +84,7 @@ class TicketController extends Controller
     // }
       //    impression
         // // $connector = null;
+        $prix=TypeTicket::where('nom',$request->acte)->first();
         $connector = new WindowsPrintConnector("AURES ODP-333");
         // dd($connector);
         /* Print a "Hello world" receipt" */
@@ -101,6 +102,27 @@ class TicketController extends Controller
         $printer->text('DATE :'.$ticket->date_vente);
         $printer->feed(1);
         $printer->text('ACTE :'.$ticket->acte);
+        $printer->feed(1);
+        $printer->text('Prix :'.$prix->prix.' Xof');
+        $printer->feed(1);
+        $printer->text('---------------------------');
+        $printer->feed(1);
+        $printer -> cut();
+        $img = EscposImage::load("assets\images\media\logo\log.png");
+        $printer->graphics($img,);
+        $printer->text("Cabinet Medical Yaye fatou Ndiaye!\n");
+        $printer->feed(1);
+        $printer->text('PRENOM et NOM :'.$ticket->prenom.' '.$ticket->nom);
+        $printer->feed(1);
+        $printer->text('ADRESSE :'.$ticket->adresse);
+        $printer->feed(1);
+        $printer->text('AGE :'.$ticket->age);
+        $printer->feed(1);
+        $printer->text('DATE :'.$ticket->date_vente);
+        $printer->feed(1);
+        $printer->text('ACTE :'.$ticket->acte);
+        $printer->feed(1);
+        $printer->text('Prix :'.$prix->prix.' Xof');
         $printer->feed(1);
         $printer->text('---------------------------');
         $printer->feed(1);
