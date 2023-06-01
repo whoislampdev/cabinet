@@ -77,7 +77,7 @@ Route::middleware(['caisse']    )->group(function () {
     Route::resource('Details',DetailsController::class);
     Route::resource('rapport', RapportCaisseController::class);
 });
-#pharmacie route
+#pharmacie route 
 
 Route::middleware(['pharmacie'])->group(function(){
     Route::resource('categorie',TypeMedicamentController::class);
