@@ -83,6 +83,16 @@ Route::middleware(['pharmacie'])->group(function(){
     Route::resource('categorie',TypeMedicamentController::class);
     Route::resource('medicament',MedicamentController::class);
     Route::resource('vente',VenteMedicamentController::class);
+    $count_ticket=Ticket::all()->count();
+    $count_personnals=Personnals::all()->count();
+    $count_medocs=Medicament::all()->count();
+    $count_typemedocs=TypeMedicament::all()->count();
+    return view('admin.index',[
+        'count_ticket'=>$count_ticket,
+        'count_medocs'=>$count_medocs,
+        'count_typemedocs'=>$count_typemedocs,
+        'count_personnals'=>$count_personnals
+    ]);
     
     });
     Route::middleware(['admin'])->group( function ()
