@@ -6,6 +6,8 @@ use App\Models\VenteMedicament;
 use App\Http\Requests\StoreVenteMedicamentRequest;
 use App\Http\Requests\UpdateVenteMedicamentRequest;
 use App\Models\Medicament;
+use App\Models\{Ticket,UserDateLog};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -24,8 +26,19 @@ class VenteMedicamentController extends Controller
      */
     public function create()
     {
-        $med=Medicament::all();
-        return view('medicament.vendre_medicament',compact('med'));
+        // touts les medicaments qui existe sur notre pharmacie 
+        $medicament=Medicament::all();
+        $request=Auth::user()->id;
+    //   je parcours les log pour recuperer  la derniere date authentifier de cette user 
+        $date_log=UserDateLog::where('use_id', Auth::user()->id)->
+        orderBy('created_at', 'desc')->first();
+        // et je compare cette date avec la date de vente des tickets pour recuperer la liste des tickets vendu en jouant sur la session
+        $all_vente_id=Ticket::where('date_vente',$date_log->date_log)->get(); 
+         return view('medicament.vendre_medicament',[
+             'all_vente_id'=>$all_vente_id,
+             'medicament'=>$medicament
+         ]);
+   
     }
 
     /**
