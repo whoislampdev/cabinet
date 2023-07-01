@@ -131,7 +131,7 @@ class TicketController extends Controller
 
         $printer->close();
 
-    return redirect()->back()->withErrors($validator)->withInput();
+    return redirect()->back()->withErrors($validator)->with('message','tickets ajouter avec success');
     }
 
     /**

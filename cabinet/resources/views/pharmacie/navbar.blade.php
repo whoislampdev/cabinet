@@ -116,7 +116,7 @@
                                     <a href="" class="text-reset notification-item">
                                         <div class="media">
                                             <img src="assets/images/users/avatar-3.jpg"
-                                                class="mr-3 rounded-circle avatar-xs" alt="user-pic">
+                               !                 class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="media-body">
                                                 <h6 class="mt-0 mb-1">Victoria Mendis</h6>
                                                 <p class="font-size-12 mb-1">Just upgraded to premium account.</p>
@@ -145,7 +145,7 @@
                             <div class="dropdown-menu dropdown-menu-right">
 
                                 <a class="dropdown-item d-flex align-items-center justify-content-between"
-                                    href="route('profile.edit')">
+                                    href="{{url('profile.edit')}}">
                                     {{ __('Profile') }}
 
                                 </a>
@@ -156,7 +156,7 @@
                                 <a class="dropdown-item d-flex align-items-center justify-content-between"
                                 href="route('logout')"  onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                     {{ __('Log Out') }}
+                                     {{ __('Se Deconnecter') }}
                                 </a>
                                 </form>
 

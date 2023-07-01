@@ -65,7 +65,7 @@ class PersonnalController extends Controller
             'email'=>$request->email,
             'password'=> Hash::make($request->password)
         ]);
-         return redirect()->back()->withErrors($validator)->withInput();
+         return redirect()->back()->withErrors($validator)->with('message',' ajouter avec success');
 
     }
 

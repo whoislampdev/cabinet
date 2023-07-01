@@ -55,7 +55,7 @@ class TypeTicketController extends Controller
         
     //     ]);
     // }
-    return redirect()->back();
+    return redirect()->back()->with('message','ajouter avec success');
     }
 
     /**

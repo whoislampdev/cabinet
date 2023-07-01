@@ -12,7 +12,7 @@
                                 <div class="row d-flex align-items-center mb-4">
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0">
-                                            125
+                                            {{$count_medoc}}
                                         </h2>
                                     </div>
                                     <!-- <div class="col-4 text-right">
@@ -39,7 +39,7 @@
                                 <div class="row d-flex align-items-center mb-4">
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0">
-                                            269
+                                            {{$count_Tymedocs}}
                                         </h2>
                                     </div>
                                     <!-- <div class="col-4 text-right">
@@ -66,7 +66,7 @@
                                 <div class="row d-flex align-items-center mb-4">
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0">
-                                            369
+                                            {{$count_Ventmedocs}}
                                         </h2>
                                     </div>
                                     <!-- <div class="col-4 text-right">

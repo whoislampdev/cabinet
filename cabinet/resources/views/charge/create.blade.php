@@ -5,9 +5,15 @@
 <div class="container ">
     <h1 style="text-align: center; margin-top:80px;">bienvenue dans la caisse</h1>
     <div class="card">
+
         <div class="card-body">
             <h4 class="card-title" style="text-align:center">Vente Ticketing</h4>
             <p class="card-subtitle mb-4" style="text-align:center">caissiere du cabinet Medicale Yaye Fatou Ndiaye .</p>
+            @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+          @endif
            <form action="{{route('charges.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">

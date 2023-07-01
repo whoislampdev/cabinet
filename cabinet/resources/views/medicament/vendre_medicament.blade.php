@@ -1,4 +1,4 @@
-@extends('./pharmacie.base')
+@extends('pharmacie.base')
 @section('main')
 <div class="row">
     <div class="col-12">
@@ -11,44 +11,86 @@
                     <li class="breadcrumb-item active">Administrateur</li>
                 </ol>
             </div>
-            
-
         </div>
+        <form id="myForm" method="POST" action="javascript: void(0);">
+            <div id="success">
+
+            </div>
+            @csrf
+            <table id="myTable" class="table table-collapse">
+                <tr>
+                    <th>Quantite</th>
+                    <th>Medicaments</th>
+                    <th>Tickets</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    
+                    <td><input name="quantites[]" type="number" class="form-control row" id="validationCustom01" placeholder="Quantite" required></td>
+                    <td> <select name="medicaments[]" class="form-control row" id="exampleFormControlSelect1">
+                        {{-- <option value="">-------------------</option> --}}
+                    @foreach($medicament as $cat)
+                        <option value="{{$cat->id}}">{{$cat->nom}}</option>
+                    @endforeach
+                    </select></td>
+                    <td>   <select name="tickets[]" class="form-control row" id="exampleFormControlSelect1">
+                        {{-- <option value="">-------------------</option> --}}
+                    @foreach($all_vente_id as $tickets)
+                        <option value="{{$tickets->id}}">{{$tickets->prenom}} {{$tickets->nom}}</option>
+                    @endforeach
+                    </select></td>
+                    <td><input name="user_id[]" class="row" type="hidden" value="{{Auth::user()->id}}" id="validationCustom01" placeholder="Prix" required></td>
+                </tr>
+            </table>
+            <button type="button" onclick="addRow()">nouvelle Ligne</button>
+            <button type="submit" id="submit">Ajouter </button>
+        </form>
     </div>
 </div>
-<div class="col-sm-12">
-    <form action="{{route('vente.store')}}" method="POST" class="needs-validation" enctype="multipart/form-data">
-        @csrf
-        <input name="user_id" type="number" value="{{Auth::user()->id}}" id="validationCustom01" placeholder="Prix" required>
-            <div class="col-md-12 mb-3">
-                <label for="validationCustom01">Quantite</label>
-                <input name="quantite" type="number" class="form-control" id="validationCustom01" placeholder="Prix" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-12 mb-3">
-                <select name="medicament" class="form-control" id="exampleFormControlSelect1">
-                    {{-- <option value="">-------------------</option> --}}
-                @foreach($medicament as $cat)
-                    <option value="{{$cat->id}}">{{$cat->nom}}</option>
-                @endforeach
-                </select>
-            </div>
-            <div class="col-md-12 mb-3">
-                <label for="exampleFormControlSelect1">Tickets vendu</label>
-                <select name="tickets" class="form-control" id="exampleFormControlSelect1">
-                    {{-- <option value="">-------------------</option> --}}
-                @foreach($all_vente_id as $tickets)
-                    <option value="{{$tickets->id}}">{{$tickets->prenom}} {{$tickets->nom}}</option>
-                @endforeach
-                </select>
-            </div>
+<script text="text/js">
+  // add row
+  function addRow() {
+    var table = document.getElementById("myTable");
+    var row = table.insertRow();
+     var quantityCell = row.insertCell();
+    var medCell = row.insertCell();
+    var ticketsCell = row.insertCell();
+    var personalCell = row.insertCell();
+    // quantity
+    quantityCell.innerHTML = '<input type="number" class="form-control" placeholder="quantite" name="quantites[]" />';
+   // medicament
+    // var medCell = row.insertCell();
+    var selectElement = document.createElement('select');
+    selectElement.name = 'medicaments[]';
+    selectElement.className = 'form-control';
+    selectElement.id = 'exampleFormControlSelect1';
+
+    @foreach($medicament as $cat)
+        var option = document.createElement('option');
+        option.value = '{{ $cat->id }}';
+        option.text = '{{ $cat->nom }}';
+        selectElement.appendChild(option);
+    @endforeach
+    medCell.appendChild(selectElement);
+// tickets
+// var medCell = row.insertCell();
+    var selectElement = document.createElement('select');
+    selectElement.name = 'tickets[]';
+    selectElement.className = 'form-control';
+    selectElement.id = 'exampleFormControlSelect2';
+    @foreach($all_vente_id as $cat)
+        var option = document.createElement('option');
+        option.value = '{{ $cat->id }}';
+        option.text = '{{ $tickets->prenom }} {{ $tickets->nom }}';
+        selectElement.appendChild(option);
+    @endforeach
+    ticketsCell.appendChild(selectElement);
+    // user_id
+    personalCell = '<input name="user_id[]" type="hidden" value="{{Auth::user()->id}}" id="validationCustom01" placeholder="Prix" required>';
+}
 
 
-        <button style="margin-left:450px;" class="btn btn-primary waves-effect waves-light" type="submit">Ajouter</button>
-    </form>
-</div>
+    </script>
 
 
 @endsection 

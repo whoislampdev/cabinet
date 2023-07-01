@@ -4,7 +4,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-
+                @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+              @endif
                 <h4 style="text-align: center;" class="card-title">Nouveau Medicament</h4>
                 <form action="{{route('medicament.store')}}" method="POST" class="needs-validation" enctype="multipart/form-data">
                     @csrf

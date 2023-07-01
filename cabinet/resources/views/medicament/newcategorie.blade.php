@@ -7,6 +7,11 @@
             <div class="card-body">
 
                 <h4 style="text-align: center;" class="card-title">Nouvelle Categorie de Medicament</h4>
+                @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+              @endif
                 <form action="{{route('categorie.store')}}" method="POST" class="needs-validation" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">

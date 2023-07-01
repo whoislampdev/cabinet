@@ -57,7 +57,7 @@ class MedicamentController extends Controller
             'quantite_disponible'=>$request->quantite_disponible,
             'posologie'=>$request->posologie,
         ]);
-        return back();
+        return back()->with('message','ajouter avec success');
     }
 
     /**

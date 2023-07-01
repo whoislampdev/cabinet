@@ -6,6 +6,11 @@
     <h1 style="text-align: center; margin-top:80px;">bienvenue dans la caisse</h1>
     <div class="card">
         <div class="card-body">
+            @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+          @endif
             <h4 class="card-title" style="text-align:center">Vente Ticketing</h4>
             <p class="card-subtitle mb-4" style="text-align:center">caissiere du cabinet Medicale Yaye Fatou Ndiaye .</p>
            <form action="{{route('acte.store')}}" method="post" enctype="multipart/form-data">

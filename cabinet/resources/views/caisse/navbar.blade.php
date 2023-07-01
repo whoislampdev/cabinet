@@ -141,11 +141,11 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
 
-                                <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                {{-- <a class="dropdown-item d-flex align-items-center justify-content-between"
                                     href="route('profile.edit')">
                                     {{ __('Profile') }}
 
-                                </a>
+                                </a> --}}
 
 
                                 <form method="POST" action="{{ route('logout') }}">
@@ -153,7 +153,7 @@
                                 <a class="dropdown-item d-flex align-items-center justify-content-between"
                                 href="route('logout')"  onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                     {{ __('Log Out') }}
+                                     {{ __('Se Deconnecter') }}
                                 </a>
                                 </form>
 

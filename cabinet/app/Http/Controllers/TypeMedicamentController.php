@@ -44,7 +44,7 @@ class TypeMedicamentController extends Controller
         TypeMedicament::create([
             'nom'=>$request->nom,
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('message',' ajouter avec success');
     }
 
     /**

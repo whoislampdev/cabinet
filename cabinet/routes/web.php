@@ -1,5 +1,5 @@
 <?php
-  use App\Models\{TypeTicket,Ticket,TypeMedicament,Medicament, Personnals};
+  use App\Models\{TypeTicket,Ticket,TypeMedicament,Medicament, Personnals,VenteMedicament,};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{ProfileController,
     TypeTicketController,
@@ -39,6 +39,7 @@ Route::get('/admin', function () {
     $count_personnals=Personnals::all()->count();
     $count_medocs=Medicament::all()->count();
     $count_typemedocs=TypeMedicament::all()->count();
+    
     return view('admin.index',[
         'count_ticket'=>$count_ticket,
         'count_medocs'=>$count_medocs,
@@ -63,8 +64,16 @@ Route::get('/caisse', function () {
         'id'=>$id       
     ]);
 })->middleware(['auth', 'verified'])->name('caisse');
+
 Route::get('/pharmacie', function () {
-    return view('pharmacie.index');
+    $count_medoc=Medicament::all()->count();
+    $count_Tymedocs=TypeMedicament::all()->count();
+    $count_Ventmedocs=VenteMedicament::all()->count();
+    return view('pharmacie.index',[
+        'count_medoc'=>$count_medoc,
+        'count_Tymedocs'=>$count_Tymedocs,
+        'count_Ventmedocs'=>$count_Ventmedocs,
+    ]);
 })->middleware(['auth', 'verified'])->name('pharmacie');
 
 
@@ -87,6 +96,7 @@ Route::middleware(['pharmacie'])->group(function(){
     $count_personnals=Personnals::all()->count();
     $count_medocs=Medicament::all()->count();
     $count_typemedocs=TypeMedicament::all()->count();
+    Route::post('ventemed',[VenteMedicamentController::class,'vente']);
     return view('admin.index',[
         'count_ticket'=>$count_ticket,
         'count_medocs'=>$count_medocs,
