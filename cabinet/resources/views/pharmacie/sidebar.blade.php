@@ -19,22 +19,21 @@
             <li class="menu-title">Menu</li>
 
             <li>
-                <a href="{{url('pharmacie')}}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
-                        class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
+                <a href="{{url('pharmacie')}}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span>Dashboard</span></a>
             </li>
 
             <li>
-                <a href="{{route('medicament.index')}}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
-                        class="badge badge-pill badge-primary float-right">7</span><span>Medicament</span></a>
+                <a href="{{route('medicament.index')}}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span>Medicament</span></a>
             </li>
 
             <li>
-                <a href="{{route('categorie.index')}}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
-                        class="badge badge-pill badge-primary float-right">7</span><span>Categorie</span></a>
+                <a href="{{route('categorie.index')}}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span>Categorie</span></a>
             </li>
             <li>
-                <a href="{{route('vente.create')}}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
-                        class="badge badge-pill badge-primary float-right">7</span><span>Vente</span></a>
+                <a href="{{route('vente.create')}}" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span>Vente</span></a>
+            </li>
+              <li>
+                <a href="" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span>Vente Journalier</span></a>
             </li>
 
 

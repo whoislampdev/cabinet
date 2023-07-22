@@ -7,46 +7,30 @@ use App\Models\Ticket;
 
 class PharmacieDetailsController extends Controller
 {
-    public static $date=array(1=>'Janvier',2=>'Fevrier',3=>'Mars',4=>'Avril',5=>'Mai',6=>'Juin',7 =>'Juillet',8 =>'Aout',9=>'Septembre',10=>'Octobre',11 =>'Novembre',12 => 'Decembre');
-    public static $mois=[];
-    public static $all_ticket=[];
-    public static $year=[];
+
     public function index()
     {
-        $currentMonth='';
-        $curentYear='';
- 
-        $all_ticket=Ticket::all();
-        // $all_ticket=
-        // return $all_ticket;
-        foreach($all_ticket as $all){
-            $monthToCompare = date('m', strtotime($all->date_vente));
-            $yearToCompare = date('y', strtotime($all->date_vente));
-
-            if($monthToCompare<=10){
-            $monthToCompare = str_replace(0, '', $monthToCompare);
-            }
-            self::$mois[$monthToCompare]=self::$date[$monthToCompare];
-            self::$year[$yearToCompare]=$yearToCompare;
-            ;
-            // dd(self::$year);
-            
-           
-            if($currentMonth == $monthToCompare ){
-            self::$data[]=$all;
-            }
+        $count_medoc=Medicament::all()->count();
+    $count_Tymedocs=TypeMedicament::all()->count();
+    $date=UserDateLog::where('use_id', Auth::user()->id)->
+    orderBy('created_at', 'desc')->first();
+    $count_Ventmedocs=VenteMedicament::where('created_at',$date->date_log)->get()->count();
+    $medi=Medicament::all();
+    return view('pharmacie.index',[
+        'count_medoc'=>$count_medoc,
+        'count_Tymedocs'=>$count_Tymedocs,
+        'count_Ventmedocs'=>$count_Ventmedocs,
+        'medi'=>$medi,
+    ]);
            
         }
-        // return self::$mois;
-        // return self::$data;
 
-        
-     
-        return view('AdminRapport.index',[
-            'mois'=>self::$mois,
-            'year'=>self::$year,
-            'all_ticket'=>$all_ticket
+        return view('vente.show',[
+            'Montant_total'=>self::$Montant,
+            'cout_vente'=>self::$count
         ]);
+    
+            //  dd($this->Montant_total);
     }
 
     public function data_by_mois(Request $request){

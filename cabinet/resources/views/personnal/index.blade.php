@@ -29,7 +29,7 @@
                         placeholder="00 000 00 00">
                         <br>
                     <label for="exampleFormControlInput1" class="form-label">Role</label>
-                    <select class="form-select" name="role"  aria-label="Default select example">
+                    <select class="form-control" name="role"  aria-label="Default select example">
                         <option value="admin">Admin</option>
                         <option value="pharmacie">Pharmacien</option>
                          <option value="caisse">Agents</option>

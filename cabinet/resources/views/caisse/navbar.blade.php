@@ -10,7 +10,7 @@
                         <div class="dropdown d-none d-sm-inline-block">
                             <button type="button" class="btn header-item waves-effect"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="mdi mdi-plus"></i> Create New
+                                <i class="mdi mdi-plus"></i> Nouveau
                                 <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                             </button>
                             <div class="dropdown-menu">
@@ -141,11 +141,11 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
 
-                                {{-- <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                <a class="dropdown-item d-flex align-items-center justify-content-between"
                                     href="route('profile.edit')">
                                     {{ __('Profile') }}
 
-                                </a> --}}
+                                </a>
 
 
                                 <form method="POST" action="{{ route('logout') }}">

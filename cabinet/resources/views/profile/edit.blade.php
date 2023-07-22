@@ -1,4 +1,12 @@
+@if(Auth::user()->role== 'admin')
 @extends('admin.base')
+@endif
+@if(Auth::user()->role== 'pharmacie')
+@extends('pharmacie.base')
+@endif
+@if(Auth::user()->role== 'caisse')
+@extends('caisse.base')
+@endif
 @section('main')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">

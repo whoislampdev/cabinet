@@ -1,6 +1,7 @@
 <?php
-  use App\Models\{TypeTicket,Ticket,TypeMedicament,Medicament, Personnals,VenteMedicament,};
+  use App\Models\{TypeTicket,Ticket,TypeMedicament,Medicament, Personnals,VenteMedicament,UserDateLog};
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\{ProfileController,
     TypeTicketController,
     PersonnalController,
@@ -15,7 +16,8 @@ use App\Http\Controllers\{ProfileController,
     AdminCaisseController,
     AdminJsController,
     adminDetailsController,
-    RapportPersoController};
+    RapportPersoController,
+    PharmacieDetailsController};
 
 // >>>>>>> e72887a9479e501bd9961c4cf1905b768cab3f04
 
@@ -68,11 +70,35 @@ Route::get('/caisse', function () {
 Route::get('/pharmacie', function () {
     $count_medoc=Medicament::all()->count();
     $count_Tymedocs=TypeMedicament::all()->count();
-    $count_Ventmedocs=VenteMedicament::all()->count();
+    $date=UserDateLog::where('use_id', Auth::user()->id)->
+    orderBy('created_at', 'desc')->first();
+    $count_Ventmedocs=VenteMedicament::where('created_at',$date->date_log)->get()->count();
+    $medi=Medicament::all();
+    $total_vente=VenteMedicament::where('user_id', Auth::user()->id)->get();
+    $montant=Medicament::all();
+    $date=UserDateLog::where('use_id', Auth::user()->id)->
+    orderBy('created_at', 'desc')->first();
+    $Montant=0;
+    foreach($total_vente as $vente){
+    
+      if($date->date_log == date('Y-m-d', strtotime($vente->created_at))){
+        foreach($montant as $mont){
+            if($mont->id == $vente->medicament_id ){
+                // return $mont->prix;
+                $Montant+=$mont->prix*$vente->quantite;
+            
+            }
+    }   
+        }
+       
+    }
     return view('pharmacie.index',[
         'count_medoc'=>$count_medoc,
         'count_Tymedocs'=>$count_Tymedocs,
         'count_Ventmedocs'=>$count_Ventmedocs,
+        'Montant'=>$Montant,
+        'medi'=>$medi
+        
     ]);
 })->middleware(['auth', 'verified'])->name('pharmacie');
 
@@ -92,16 +118,20 @@ Route::middleware(['pharmacie'])->group(function(){
     Route::resource('categorie',TypeMedicamentController::class);
     Route::resource('medicament',MedicamentController::class);
     Route::resource('vente',VenteMedicamentController::class);
+    // Route::get('phamacie-details',PharmacieDetailsController::class);
     $count_ticket=Ticket::all()->count();
     $count_personnals=Personnals::all()->count();
     $count_medocs=Medicament::all()->count();
     $count_typemedocs=TypeMedicament::all()->count();
+  
+
     Route::post('ventemed',[VenteMedicamentController::class,'vente']);
     return view('admin.index',[
         'count_ticket'=>$count_ticket,
         'count_medocs'=>$count_medocs,
         'count_typemedocs'=>$count_typemedocs,
-        'count_personnals'=>$count_personnals
+        'count_personnals'=>$count_personnals,
+        // 'montant'=>$Montant
     ]);
     
     });

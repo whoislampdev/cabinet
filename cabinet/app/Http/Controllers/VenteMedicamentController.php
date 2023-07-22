@@ -80,8 +80,10 @@ class VenteMedicamentController extends Controller
         $printer->text('numero Tickets:'.$tickets[0]);
         $printer->feed(1);
         foreach ($quantites as $quant) {
-
             foreach($medicament as $med){
+                $medi=new Medicament();
+                // $medi=new Medicament();
+                $medi=Medicament::find($med); 
                 foreach($tickets as $tik){
                     $ticket=$tik;
                     foreach($user as $u){
@@ -89,6 +91,8 @@ class VenteMedicamentController extends Controller
                     }
                 }
             }
+            $medi->quantite_disponible-=$quant;
+            $medi->save();
             $quantite=$quant;
             VenteMedicament::create([
                 'quantite'=> $quant,
@@ -99,9 +103,8 @@ class VenteMedicamentController extends Controller
             $medocs=Medicament::find($med);
             $printer->feed(1);
             $printer->text('Medicament :'.$medocs->nom.' ');
-            $printer->text('quantite :'.$quantite);
-            $printer->feed(2);
-        
+            $printer->text('Quantite :'.$quantite);
+            $printer->feed(2); 
         }
             $printer->cut();
             $printer->close();

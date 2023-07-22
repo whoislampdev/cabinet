@@ -31,22 +31,6 @@
                     {{-- <li></li> --}}
                     <li><a href="{{route('Vente.index')}}">Ticket Vendu</a></li>
                     <li><a href="{{route('Details.index')}}">Total vente journalier</a></li>
-                    <li><a href="{{route('rapport.index')}}"> vente journalier</a></li>
-                    {{-- <li><a href="ui-cards.html">Cards</a></li>
-                    <li><a href="ui-carousel.html">Carousel</a>
-                    <li><a href="ui-embeds.html">Embeds</a>
-                    <li><a href="ui-general.html">General</a></li>
-                    <li><a href="ui-grid.html">Grid</a></li>
-                    <li><a href="ui-media-objects.html">Media Objects</a></li>
-                    <li><a href="ui-modals.html">Modals</a></li>
-                    <li><a href="ui-progressbars.html">Progress Bars</a></li>
-                    <li><a href="ui-tabs.html">Tabs</a></li>
-                    <li><a href="ui-typography.html">Typography</a></li>
-                    <li><a href="ui-toasts.html">Toasts</a></li>
-                    <li><a href="ui-tooltips-popovers.html">Tooltips & Popovers</a></li>
-                    <li><a href="ui-scrollspy.html">Scrollspy</a></li>
-                    <li><a href="ui-spinners.html">Spinners</a></li>
-                    <li><a href="ui-sweetalerts.html">Sweet Alerts</a></li> --}}
                 </ul>
             </li>
 
